@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coloniales · Portada</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html,body{height:100%;font-family:'Montserrat',sans-serif;background:#111;overflow:hidden}
+    .cp-slider{position:relative;width:100%;height:100vh;overflow:hidden}
+    .cp-slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center}
+    .cp-slide.active{opacity:1}
+    .cp-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.75),rgba(0,0,0,.25))}
+    .cp-content{position:relative;z-index:2;text-align:center;color:#fff;padding:24px;max-width:800px}
+    .cp-kicker{font-size:.65rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--a,#d81b60);margin-bottom:10px;opacity:0;transform:translateY(16px);transition:all .5s .2s ease}
+    .cp-slide.active .cp-kicker{opacity:1;transform:translateY(0)}
+    .cp-title{font-size:clamp(2.6rem,9vw,6rem);font-weight:900;text-transform:uppercase;line-height:.9;margin-bottom:4px;opacity:0;transform:translateY(20px);transition:all .5s .35s ease}
+    .cp-slide.active .cp-title{opacity:1;transform:translateY(0)}
+    .cp-title .hl{color:var(--a,#d81b60)}
+    .cp-sub{font-size:clamp(.95rem,2vw,1.3rem);font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.6);margin-top:8px;opacity:0;transform:translateY(16px);transition:all .5s .5s ease}
+    .cp-slide.active .cp-sub{opacity:1;transform:translateY(0)}
+    .cp-desc{font-size:.85rem;line-height:1.7;color:rgba(255,255,255,.65);margin-top:14px;max-width:480px;margin-left:auto;margin-right:auto;opacity:0;transform:translateY(16px);transition:all .5s .65s ease}
+    .cp-slide.active .cp-desc{opacity:1;transform:translateY(0)}
+    .cp-btn{display:inline-block;margin-top:26px;padding:11px 34px;background:#d81b60;border-radius:60px;color:#fff;font-size:.65rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background .25s,transform .25s;opacity:0;transform:translateY(16px);transition:opacity .5s .8s ease,transform .5s .8s ease,background .25s}
+    .cp-slide.active .cp-btn{opacity:1;transform:translateY(0)}
+    .cp-btn:hover{background:#bf1663}
+    .cp-dots{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:8px}
+    .cp-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);border:none;cursor:pointer;transition:background .3s,transform .3s;padding:0}
+    .cp-dot.active{background:#d81b60;transform:scale(1.35)}
+    .cp-dot:hover{background:rgba(255,255,255,.6)}
+    .cp-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;background:rgba(255,255,255,.06);border:none;color:#fff;font-size:1.4rem;width:44px;height:44px;border-radius:50%;cursor:pointer;transition:background .25s;display:flex;align-items:center;justify-content:center}
+    .cp-arrow:hover{background:rgba(255,255,255,.15)}
+    .cp-prev{left:16px}
+    .cp-next{right:16px}
+    .cp-brand{position:absolute;top:22px;left:50%;transform:translateX(-50%);z-index:4;font-size:.6rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+    @media(max-width:640px){
+      .cp-arrow{display:none}
+      .cp-dots{bottom:20px}
+      .cp-title{font-size:clamp(1.8rem,11vw,2.8rem)}
+    }
+  </style>
+</head>
+<body>
+  <div class="cp-slider" id="cpSlider">
+    <div class="cp-brand">Coloniales · Santander</div>
+
+    <div class="cp-slide active" style="background-image:url('https://tallerescoloniales.com/wp-content/uploads/2026/05/4-nodo-Pequeno.jpg')">
+      <div class="cp-content">
+        <div class="cp-kicker">Coloniales</div>
+        <div class="cp-title">Espacios de<span class="hl">Aprendizaje</span></div>
+        <div class="cp-sub">Simulación y juego</div>
+        <div class="cp-desc">Un lugar donde la infancia encuentra materiales interesantes, tiempo sin prisa y libertad para aprender haciendo.</div>
+        <a class="cp-btn" href="#">Explorar</a>
+      </div>
+    </div>
+
+    <div class="cp-slide" style="background-image:url('https://tallerescoloniales.com/wp-content/uploads/2026/05/10-simbiosis-Pequeno.jpg')">
+      <div class="cp-content">
+        <div class="cp-kicker">Campus Verano</div>
+        <div class="cp-title">Campus<span class="hl">Verano</span></div>
+        <div class="cp-sub">11 semanas · Santander</div>
+        <div class="cp-desc">Arquitectura, arte, ciencia y juego libre. Cada semana una experiencia distinta para crecer descubriendo.</div>
+        <a class="cp-btn" href="campus-2026.html">Ver campus</a>
+      </div>
+    </div>
+
+    <div class="cp-slide" style="background-image:url('https://tallerescoloniales.com/wp-content/uploads/2026/05/1-vacio-Pequeno.jpg')">
+      <div class="cp-content">
+        <div class="cp-kicker">Espacio en Familia</div>
+        <div class="cp-title">En<span class="hl">Familia</span></div>
+        <div class="cp-sub">Compartir, observar, jugar</div>
+        <div class="cp-desc">Sesiones sensoriales pensadas para que grandes y pequeños descubran juntos el placer de hacer sin prisas.</div>
+        <a class="cp-btn" href="enfamilia-2026.html">Ver espacio</a>
+      </div>
+    </div>
+
+    <div class="cp-slide" style="background-image:url('https://tallerescoloniales.com/wp-content/uploads/2026/05/5-membranas-Pequeno.jpg')">
+      <div class="cp-content">
+        <div class="cp-kicker">Extraescolares</div>
+        <div class="cp-title">Extra<span class="hl">escolares</span></div>
+        <div class="cp-sub">Construir cada semana</div>
+        <div class="cp-desc">Grupos reducidos, materiales reales, proyectos que cambian cada trimestre. Una ventana abierta a la creatividad.</div>
+        <a class="cp-btn" href="extra-2026.html">Ver extraescolares</a>
+      </div>
+    </div>
+
+    <div class="cp-slide" style="background-image:url('https://tallerescoloniales.com/wp-content/uploads/2026/05/6-Poro-Pequeno.jpg')">
+      <div class="cp-content">
+        <div class="cp-kicker">Toma la Calle</div>
+        <div class="cp-title">Toma la<span class="hl">Calle</span></div>
+        <div class="cp-sub">Juego libre · Gratuito</div>
+        <div class="cp-desc">Construcción, arte efímero y juego en el espacio público. Sin inscripción, sin precio, sin puertas.</div>
+        <a class="cp-btn" href="toma-la-calle-2026.html">Ver programa</a>
+      </div>
+    </div>
+
+    <button class="cp-arrow cp-prev" id="cpPrev">&#10094;</button>
+    <button class="cp-arrow cp-next" id="cpNext">&#10095;</button>
+    <div class="cp-dots" id="cpDots"></div>
+  </div>
+
+  <script>
+    (function(){
+      var slides = document.querySelectorAll('.cp-slide');
+      var dotsContainer = document.getElementById('cpDots');
+      var prevBtn = document.getElementById('cpPrev');
+      var nextBtn = document.getElementById('cpNext');
+      var current = 0;
+      var timer;
+      var total = slides.length;
+
+      function goTo(index) {
+        slides.forEach(function(s){s.classList.remove('active')});
+        [].slice.call(dotsContainer.children).forEach(function(d){d.classList.remove('active')});
+        current = (index + total) % total;
+        slides[current].classList.add('active');
+        dotsContainer.children[current].classList.add('active');
+        resetTimer();
+      }
+
+      function next() { goTo(current + 1); }
+      function prev() { goTo(current - 1); }
+
+      function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(next, 3000);
+      }
+
+      for (var i = 0; i < total; i++) {
+        var dot = document.createElement('button');
+        dot.className = 'cp-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label','Ir a slide ' + (i+1));
+        dot.addEventListener('click', (function(idx){ return function(){ goTo(idx); } })(i));
+        dotsContainer.appendChild(dot);
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', prev);
+      if (nextBtn) nextBtn.addEventListener('click', next);
+      resetTimer();
+
+      document.addEventListener('visibilitychange', function(){
+        if (document.hidden) { clearInterval(timer); }
+        else { resetTimer(); }
+      });
+    })();
+  </script>
+</body>
+</html>

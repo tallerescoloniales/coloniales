@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celdas | Talleres de arquitectura, ciencia y arte</title>
+  <meta name="description" content="Explora nuestras Celdas: talleres transversales de arquitectura, ciencia, tecnología, arte y juego. Proyectos prácticos para colegios, campus y familias.">
+  <link rel="canonical" href="https://tallerescoloniales.com/celdas/">
+  <meta property="og:description" content="Descubre las 22 Celdas: propuestas prácticas de arquitectura, ciencia, arte y juego para colegios, campus y familias. Proyectos, materiales y aprendizaje activo.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./col26-system.css">
+  <style>
+    /* ── Sticky header de búsqueda ── */
+    .cat-header {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      padding: 20px 0 16px;
+      position: sticky;
+      top: 28px; /* Se apila debajo del topbar ultra-fino */
+      z-index: 80;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .cat-header-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .cat-header-top { display:flex; align-items:baseline; gap:12px; margin-bottom:14px; }
+    .cat-title { font-size:clamp(1rem,2.5vw,1.4rem); font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
+    .cat-title span { color:var(--mag); }
+    .cat-count { font-size:.6rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:#bbb; }
+    .cat-controls { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .cat-search-wrap { position:relative; flex:1; min-width:200px; }
+    .cat-search-wrap svg { position:absolute; left:11px; top:50%; transform:translateY(-50%); color:#bbb; width:15px; height:15px; pointer-events:none; }
+    .cat-search-wrap input { width:100%; padding:9px 14px 9px 36px; border:1.5px solid #e5e5e5; border-radius:8px; font-family:inherit; font-size:.82rem; outline:none; transition:border-color .2s; }
+    .cat-search-wrap input:focus { border-color:var(--mag); }
+    .cat-filters { display:flex; gap:6px; flex-wrap:wrap; }
+    .cat-fbtn { font-family:inherit; font-size:.58rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; padding:6px 12px; border-radius:6px; border:1.5px solid #ddd; background:#fff; cursor:pointer; transition:all .2s; color:#777; }
+    .cat-fbtn:hover, .cat-fbtn.on { background:var(--mag); border-color:var(--mag); color:#fff; }
+    /* ── Grid de celdas ── */
+    .cat-grid { max-width:1100px; margin:32px auto 80px; padding:0 24px; display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:16px; }
+    .celda-card { background:#fff; border-radius:10px; box-shadow:0 2px 16px rgba(0,0,0,.07); border-top:4px solid var(--cc); overflow:hidden; display:flex; flex-direction:column; transition:box-shadow .2s, transform .2s; cursor:pointer; }
+    .celda-card:hover { box-shadow:0 8px 32px rgba(0,0,0,.13); transform:translateY(-3px); }
+    .celda-card-head { padding:16px 18px 12px; display:flex; align-items:flex-start; gap:12px; }
+    .celda-num-badge { font-size:.55rem; font-weight:900; letter-spacing:.12em; color:#fff; background:var(--cc); border-radius:5px; padding:3px 8px; flex-shrink:0; margin-top:2px; }
+    .celda-card-info { flex:1; min-width:0; }
+    .celda-nombre { font-size:.93rem; font-weight:900; letter-spacing:.07em; text-transform:uppercase; color:#111; line-height:1.2; margin-bottom:4px; }
+    .celda-gancho { font-size:.68rem; font-style:italic; font-weight:600; color:var(--cc); }
+    .celda-card-desc { padding:0 18px 14px; font-size:.76rem; color:#666; line-height:1.75; border-bottom:1px solid #f0f0f0; }
+    .celda-card-tags { padding:12px 18px; display:flex; gap:7px; flex-wrap:wrap; }
+    .c-tag { font-size:.52rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:3px 7px; border-radius:4px; background:#f5f5f5; color:#666; }
+    .c-tag.cat { color:var(--cc); }
+    .celda-card-foot { padding:10px 18px 14px; display:flex; gap:8px; align-items:center; margin-top:auto; }
+    .c-badge { font-size:.57rem; font-weight:700; color:#aaa; }
+    /* ── Modal ── */
+    .cat-modal-bg { position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:300; display:none; align-items:center; justify-content:center; padding:20px; backdrop-filter:blur(5px); }
+    .cat-modal-bg.open { display:flex; }
+    .cat-modal { background:#fff; border-radius:14px; max-width:680px; width:100%; max-height:90vh; overflow-y:auto; animation:mslide .25s ease; }
+    @keyframes mslide { from{opacity:0;transform:scale(.95)} to{opacity:1;transform:scale(1)} }
+    .cat-modal-close { position:sticky; top:0; float:right; background:#fff; border:none; font-size:1.4rem; cursor:pointer; color:#aaa; padding:14px 18px; z-index:1; }
+    .cat-modal-close:hover { color:var(--mag); }
+    .cat-modal-body { padding:4px 28px 28px; }
+    .cat-modal-num { font-size:.55rem; font-weight:900; letter-spacing:.15em; color:#fff; background:var(--cc); border-radius:5px; padding:3px 8px; display:inline-block; margin-bottom:10px; }
+    .cat-modal-nombre { font-size:1.35rem; font-weight:900; letter-spacing:.08em; text-transform:uppercase; margin-bottom:4px; }
+    .cat-modal-gancho { font-size:.84rem; font-style:italic; font-weight:600; color:var(--cc); margin-bottom:18px; }
+    .cat-modal-section { margin-bottom:18px; }
+    .cat-modal-section h4 { font-size:.58rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--cc); margin-bottom:8px; }
+    .cat-modal-section p, .cat-modal-section ul { font-size:.82rem; color:#555; line-height:1.8; }
+    .cat-modal-section ul { padding-left:18px; }
+    .cat-modal-tags { display:flex; gap:6px; flex-wrap:wrap; }
+    .res-badge { font-size:.6rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:4px 10px; border-radius:5px; background:#f5f5f5; color:#555; margin:2px; }
+    /* ── No results ── */
+    .cat-no-results { text-align:center; padding:60px 20px; color:#ccc; font-size:.82rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; display:none; }
+    .cat-no-results.show { display:block; }
+    @media(max-width:600px){ .cat-controls{flex-direction:column} .cat-grid{grid-template-columns:1fr} }
+  </style>
+</head>
+<body class="col26-body">
+  <div class="col26-page">
+
+    <!-- Menú Principal (igual en todas las páginas) -->
+    <header class="main-header">
+      <a class="logo" href="#">Colonial<em>es</em></a>
+      <nav class="main-nav">
+        <a href="index.html">Inicio</a>
+        <div class="nav-dropdown">
+          <a href="sobre-nosotros-2026.html" class="nav-dropdown-trigger">Sobre…</a>
+          <div class="nav-dropdown-content">
+            <a href="sobre-nosotros-2026.html">Sobre Coloniales</a>
+            <a href="sobre-nosotros-2026.html#alejandro">Sobre mí</a>
+          </div>
+        </div>
+        <a href="celdas3.html">Celdas</a>
+        <div class="nav-dropdown">
+          <a href="programas.html">Programas</a>
+          <div class="nav-dropdown-content">
+            <a href="campus-2026.html">Campus</a>
+            <a href="enfamilia-2026.html">En familia</a>
+            <a href="extra-2026.html">Extra</a>
+            <a href="#">Nómadas</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="kit-logica-reciproca-2026.html#incluye" class="nav-dropdown-trigger">Kits</a>
+          <div class="nav-dropdown-content">
+            <a href="hexa.html">Hexa</a>
+            <a href="domiko.html">Domiko</a>
+            <a href="duomo.html">Duomo</a>
+            <a href="leopalos.html">Leopalos</a>
+          </div>
+        </div>
+        <a href="#diario">Blog</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:6px">
+        <button class="main-hamburger" id="mainHamburger"><span></span> Menú</button>
+      </div>
+    </header>
+
+    <!-- Submenú de navegación interna -->
+    <header class="col26-topbar">
+      <div class="col26-wrap col26-topbar-inner">
+        <a class="col26-topbar-title" href="#">Celdas</a>
+        <div class="col26-nav-scroll-wrapper">
+          <nav class="col26-nav">
+            <a href="index.html">Inicio</a>
+            <a href="#">Qué son</a>
+            <a href="#areas">Áreas</a>
+            <a href="#catalogo">Buscador</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Overlay menú móvil -->
+    <div class="wp-overlay" id="wpOverlay">
+      <button class="wp-overlay-close" id="wpCloseBtn">✕ Cerrar</button>
+      <nav>
+        <div class="wp-overlay-label">En esta página</div>
+        <div class="wp-overlay-sub">
+          <a href="#">Qué son</a>
+          <a href="#areas">Áreas</a>
+          <a href="#catalogo">Buscador</a>
+        </div>
+        <div class="wp-overlay-label">Páginas</div>
+        <a href="index.html">Inicio</a>
+        <a href="sobre-nosotros-2026.html">Sobre Coloniales</a>
+        <a href="sobre-nosotros-2026.html#alejandro">Sobre mí</a>
+        <a href="celdas3.html">Celdas</a>
+        <a href="programas.html">Programas</a>
+        <a href="campus-2026.html">Campus</a>
+        <a href="enfamilia-2026.html">En familia</a>
+        <a href="extra-2026.html">Extra</a>
+        <a href="#">Nómadas</a>
+        <a href="hexa.html">Hexa</a>
+        <a href="domiko.html">Domiko</a>
+        <a href="duomo.html">Duomo</a>
+        <a href="leopalos.html">Leopalos</a>
+        <a href="#diario">Blog</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="wp-overlay-social">
+        <a href="https://wa.me/34625039565" target="_blank">WhatsApp</a>
+        <a href="https://instagram.com/tallerescoloniales" target="_blank">Instagram</a>
+        <a href="https://facebook.com/tallerescoloniales" target="_blank">Facebook</a>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="col26-hero" style="padding-top:56px;">
+      <div class="col26-wrap col26-hero-grid">
+        <div class="col26-hero-copy col26-reveal">
+          <p class="col26-kicker">20 propuestas · construcción · ciencia · arte · tecnología · expresión</p>
+          <h1>Catálogo de <span>Celdas</span></h1>
+          <p>Las Celdas son la biblioteca viva de Coloniales: talleres preparados con materiales, conceptos clave y recursos de facilitación, pero abiertos en su ejecución para que cada grupo investigue a su manera. Sirven para campus, colegios, AMPAs, extraescolares, espacios familiares y proyectos a medida.</p>
+        </div>
+        <div class="col26-photo-stack col26-reveal" data-parallax-stack>
+          <div class="col26-photo-card col26-photo-a"><img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/4-nodo-Pequeno.jpg" alt="Lógica Recíproca"></div>
+          <div class="col26-photo-card col26-photo-b"><img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/2-particulas-Pequeno.jpg" alt="Partículas"></div>
+          <div class="col26-photo-card col26-photo-c"><img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/8-campo-Pequeno-rotated.jpg" alt="Campo"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Áreas de Trabajo -->
+    <section class="col26-section" id="areas" style="background: #fff; padding-bottom: 20px;">
+      <div class="col26-wrap">
+        <div class="col26-head col26-reveal">
+          <span class="col26-num">01 /</span><h2 class="col26-title">Áreas que <span>Trabajamos</span></h2>
+        </div>
+        <div class="col26-grid-2" style="gap: 40px; margin-top: 40px;">
+          <div class="col26-panel col26-reveal">
+            <h3 style="color: var(--dark); font-size: 1.3rem; font-weight: 800; margin-bottom: 12px;">📐 DISEÑO Y ARQUITECTURA</h3>
+            <p style="font-size: 0.95rem; line-height: 1.8; color: #555;">La construcción a través del juego estimula el aprendizaje transversal. Introducimos conceptos espaciales y afianzamos contenidos educativos adaptados a cada desarrollo. <strong>Generamos espacios donde aprender mejor.</strong></p>
+          </div>
+          <div class="col26-panel col26-reveal">
+            <h3 style="color: var(--dark); font-size: 1.3rem; font-weight: 800; margin-bottom: 12px;">⚙️ INGENIERÍA Y CONSTRUCCIÓN</h3>
+            <p style="font-size: 0.95rem; line-height: 1.8; color: #555;">Con poleas, engranajes e hidráulica, diseñamos máquinas, móviles y autómatas para desarrollar conceptos de física y mecánica de manera intuitiva y manipulativa. <strong>¡Crearemos objetos que nos inspiren!</strong></p>
+          </div>
+          <div class="col26-panel col26-reveal">
+            <h3 style="color: var(--dark); font-size: 1.3rem; font-weight: 800; margin-bottom: 12px;">💻 TECNOLOGÍA Y RECICLAJE</h3>
+            <p style="font-size: 0.95rem; line-height: 1.8; color: #555;">Desmontamos aparatos para explorar su funcionamiento y reinventar sus piezas. Fomentamos la reparación, la reutilización y el inicio a la programación. <strong>Nos adentramos en el futuro desde lo analógico.</strong></p>
+          </div>
+          <div class="col26-panel col26-reveal">
+            <h3 style="color: var(--dark); font-size: 1.3rem; font-weight: 800; margin-bottom: 12px;">🎨 EXPRESIÓN Y AUDIOVISUAL</h3>
+            <p style="font-size: 0.95rem; line-height: 1.8; color: #555;">Historias, espacios y mundos desde el cómic a la edición digital o ritmos corporativos. Un lugar de expresión libre en lo plástico, el movimiento y el pensamiento propio. <strong>El mundo empieza imaginándolo.</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sticky search bar -->
+    <div class="cat-header" id="catalogo">
+      <div class="cat-header-inner">
+        <div class="cat-header-top">
+          <span class="cat-title">Celdas de <span>Aprendizaje</span></span>
+          <span class="cat-count" id="countLabel">22 celdas</span>
+        </div>
+        <div class="cat-controls">
+          <div class="cat-search-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="searchInput" placeholder="Buscar celda, material, concepto…">
+          </div>
+          <div class="cat-filters">
+            <button class="cat-fbtn on" data-cat="all">Todas</button>
+            <button class="cat-fbtn" data-cat="construccion">Construcción</button>
+            <button class="cat-fbtn" data-cat="ciencia">Ciencia</button>
+            <button class="cat-fbtn" data-cat="tecnologia">Tecnología</button>
+            <button class="cat-fbtn" data-cat="arte">Arte</button>
+            <button class="cat-fbtn" data-cat="expresion">Expresión</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid generado por JS -->
+    <div class="cat-grid" id="catGrid"></div>
+    <p class="cat-no-results" id="noResults">No se encontraron celdas</p>
+
+  </div><!-- /col26-page -->
+
+  <!-- Modal -->
+  <div class="cat-modal-bg" id="modalBg">
+    <div class="cat-modal">
+      <button class="cat-modal-close" id="modalClose">×</button>
+      <div class="cat-modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <section class="col26-section" id="contacto">
+    <div class="col26-wrap">
+      <div class="col26-cta col26-reveal">
+        <h2 class="col26-title">¿Qué Celda Quieres Activar?</h2>
+        <p>Ya sea para un taller puntual, un campus de verano, una extraescolar o un proyecto a medida en tu centro, hay una celda Colonial esperándote. Cuéntanos qué necesitas y te ayudamos a darle forma.</p>
+        <div class="col26-actions">
+          <a class="col26-btn col26-btn-primary" href="https://wa.me/34625039565" target="_blank" rel="noopener noreferrer">WhatsApp · 625 039 565</a>
+          <a class="col26-btn col26-btn-outline" href="mailto:hola@tallerescoloniales.com">hola@tallerescoloniales.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <script src="./col26-system.js"></script>
+  <script>
+  var CELDAS=[
+    {num:"01",nombre:"Lógica Recíproca",gancho:"Cuando pocos hacen un mucho",cat:["construccion"],color:"#e07b3a",
+     desc:"Estructuras autoportantes donde cada elemento sostiene al resto. Palos de Leonardo, domos geodésicos y construcciones sin uniones fijas que demuestran cómo la fuerza se distribuye colectivamente.",
+     materiales:["Palos de madera","Cuerdas","Strawbees","Bridas","Tubos PVC"],
+     conceptos:["Lógica recíproca","Tensegridad","Geometría espacial","Estructuras geodésicas"],
+     edades:"6-16",duracion:"2-4h",recursos:["PPTX","PDF","DOCX"],links:[],campus:["Nodo 2026"]},
+    {num:"02",nombre:"Ingeniería Inversa",gancho:"Desmonta para entender",cat:["tecnologia","ciencia"],color:"#4a78c8",
+     desc:"Desmontar aparatos tecnológicos para entender cómo funcionan por dentro. Tinkering con la tecnología cotidiana, desde altavoces hasta electrodomésticos. Reutilización creativa de componentes.",
+     materiales:["Aparatos viejos","Destornilladores","Lupas","Pinzas","Cables"],
+     conceptos:["Tinkering","Ingeniería inversa","Reciclaje tecnológico","Circuitos"],
+     edades:"8-16",duracion:"2-3h",recursos:["PPTX","PDF","DOCX"],links:["https://www.youtube.com/watch?v=LjXHWKPZ8kk"],campus:["Verano 2022"]},
+    {num:"03",nombre:"Canica Dinámica",gancho:"Haz que ruede",cat:["ciencia","construccion"],color:"#d4663a",
+     desc:"Circuitos de canicas y máquinas de Rube Goldberg. Física de la gravedad, la inercia y el movimiento. Versión agua con tubos e hidráulica. Diseño digital con LineRider y simuladores.",
+     materiales:["Canicas","Cartón","Tubos","Canaletas","Imanes","Lego"],
+     conceptos:["Gravedad","Inercia","Máquina de Goldberg","Causalidad","Hidráulica"],
+     edades:"5-14",duracion:"2-4h",recursos:["PPTX","PDF","DOCX","ODT"],links:["https://www.linerider.com/"],campus:["Prana 2026"]},
+    {num:"04",nombre:"Robótica Analógica",gancho:"Mueve sin motor",cat:["tecnologia","construccion"],color:"#3aaba0",
+     desc:"Autómatas de cartón y sistemas mecánicos que generan movimiento sin electricidad. Leva, biela, manivela y transmisión de movimiento con materiales simples.",
+     materiales:["Cartón grueso","Palillos","Gomas elásticas","Hilo de pescar","Clips"],
+     conceptos:["Mecanismos","Leva","Biela-manivela","Movimiento circular","Transmisión"],
+     edades:"8-16",duracion:"2-4h",recursos:["PDF"],links:[],campus:[]},
+    {num:"05",nombre:"Modos de Habitar",gancho:"Cómo vives el espacio",cat:["construccion","arte"],color:"#8b5fc8",
+     desc:"Exploración arquitectónica del espacio habitable. Arquitectura efímera, estructuras neumáticas, laberintos. Cómo el cuerpo percibe y transforma el espacio con materiales mínimos.",
+     materiales:["Plástico de pintor","Imanes de neodimio","Cartón","Cinta americana","Cuerdas"],
+     conceptos:["Arquitectura efímera","Espacio habitable","Escala humana","Membrana","Laberinto"],
+     edades:"5-16",duracion:"3-6h",recursos:["PDF","RTF"],links:[],campus:["Membrana 2026"]},
+    {num:"06",nombre:"Toma la Calle",gancho:"La calle es tuya",cat:["expresion","arte"],color:"#c8d44a",
+     desc:"El espacio urbano como taller. Tiza, sedimentos y arte efímero en la calle. Juegos tradicionales reinventados. La ciudad como material de juego y aprendizaje.",
+     materiales:["Tizas de colores","Agua","Plantillas","Sedimentos"],
+     conceptos:["Arte urbano","Arte efímero","Juego en la calle","Espacio público"],
+     edades:"4-12",duracion:"1-3h",recursos:["DOCX","PPTX"],links:[],campus:[]},
+    {num:"07",nombre:"Vaya Telar",gancho:"Teje tu mundo",cat:["arte","tecnologia"],color:"#d81b60",
+     desc:"Del telar manual al e-textil. Tejido, punto y costura como lenguaje. Integración con Lilypad Arduino para textiles interactivos. Patrones geométricos y estructuras de hilo.",
+     materiales:["Hilo","Telar","Aguja","Lilypad Arduino","LEDs","Fieltro"],
+     conceptos:["Tejido","Trama y urdimbre","E-textil","Patrones","Filamento"],
+     edades:"6-16",duracion:"2-4h",recursos:["JPG","PDF"],links:[],campus:["Filamento 2026"]},
+    {num:"08",nombre:"Más Madera",gancho:"A golpe de mazo",cat:["construccion"],color:"#b07848",
+     desc:"Taller de madera con herramientas reales adaptadas a niños. Serruchos, mazos, clavos y tornillos. Construcciones desde cajas y soportes hasta estructuras mayores.",
+     materiales:["Listones de madera","Serruchos","Martillo","Clavos","Tornillos","Lija"],
+     conceptos:["Carpintería básica","Uniones","Medición","Seguridad con herramientas"],
+     edades:"8-16",duracion:"3-6h",recursos:[],links:[],campus:[]},
+    {num:"09",nombre:"Va de Cine",gancho:"Luces, cámara, acción",cat:["tecnologia","arte","expresion"],color:"#6b9db8",
+     desc:"Fotografía, vídeo, stop-motion y GIF. Del story board al resultado final. Cámara oscura, timelapse, chroma y efectos ópticos. Edición con OpenShot, Pivot y Piskel.",
+     materiales:["Cámara o móvil","Cartón negro","Linterna","Plastilina","Trípode casero"],
+     conceptos:["Fotografía","Stop-motion","Planos cinematográficos","Encuadre","Edición de vídeo"],
+     edades:"8-16",duracion:"2-6h",recursos:["DOCX","PDF"],links:[],campus:["Va de cine 2023"]},
+    {num:"10",nombre:"Somos Luz",gancho:"Ver lo invisible",cat:["ciencia","arte"],color:"#c8973a",
+     desc:"Experimentos con luz, color y óptica. Espectroscopio con CD, hologramas caseros y efectos de difracción. La física de la luz como herramienta creativa y artística.",
+     materiales:["CD viejos","Cartón","Cinta adhesiva","Linterna","Prisma","Acetato"],
+     conceptos:["Espectro de luz","Difracción","Holograma","Color","Óptica"],
+     edades:"6-14",duracion:"1-3h",recursos:["PDF"],links:[],campus:[]},
+    {num:"11",nombre:"Enlaces Covalentes",gancho:"Potingues y reacciones",cat:["ciencia"],color:"#4aaa5e",
+     desc:"Química creativa: slime, plastilina casera, lava volcán, fluido no newtoniano, fractales de tinta. Experimentos accesibles con ingredientes domésticos que revelan propiedades de la materia.",
+     materiales:["Maicena","Cola blanca","Bicarbonato","Vinagre","Sal","Colorantes","Aceite"],
+     conceptos:["Polímeros","Densidad","Viscosidad","pH","Reacciones químicas","No-newtoniano"],
+     edades:"4-14",duracion:"1-3h",recursos:["DOCX","PDF"],links:[],campus:[]},
+    {num:"12",nombre:"Haz que Suene",gancho:"Todo vibra",cat:["ciencia","arte","expresion"],color:"#d45b6e",
+     desc:"Acústica, percusión e instrumentos caseros. Cimática: el sonido que dibuja formas en arena. Altavoces con membranas y teléfonos de cuerdas. Instrumentos reciclados.",
+     materiales:["Globos","Arena fina","Altavoces","Cuerdas","Latas","Gomas elásticas"],
+     conceptos:["Vibración","Onda sonora","Cimática","Frecuencia","Resonancia","Percusión"],
+     edades:"4-14",duracion:"1-3h",recursos:[],links:[],campus:["Prana 2026"]},
+    {num:"13",nombre:"Cartón, Cartón, Cartón",gancho:"Construye con lo que sobra",cat:["construccion","arte"],color:"#a8bc2a",
+     desc:"Del cartón a la arquitectura. Cajas, estructuras, pop-up y kirigami. Origami arquitectónico y laberintos habitables. El cartón reciclado como único material.",
+     materiales:["Cajas de cartón","Cúter","Regla","Cola","Pinturas","Cinta"],
+     conceptos:["Origami","Kirigami","Pop-up","Arquitectura efímera","Reciclaje","Pliegue"],
+     edades:"5-14",duracion:"2-6h",recursos:["DOCX","PPTX","PDF"],links:[],campus:["Carnavales 2024"]},
+    {num:"14",nombre:"Antropoceno",gancho:"Tu basura es tu material",cat:["ciencia","arte"],color:"#1aaa90",
+     desc:"El plástico como material artístico y reflexión medioambiental. Caretas africanas con botellas, hilo de botella, fundido y prensado de plástico reciclado.",
+     materiales:["Botellas plástico","Hilo de botella","Pistola de calor","Papel de horno"],
+     conceptos:["Reciclaje","Economía circular","Antropoceno","Upcycling"],
+     edades:"8-16",duracion:"2-4h",recursos:["DOCX"],links:[],campus:[]},
+    {num:"15",nombre:"Todo en Regla",gancho:"Mide tu mundo",cat:["ciencia","tecnologia"],color:"#6b9db8",
+     desc:"Medición, proporción y escala. El número áureo en la naturaleza y la historia. Crear reglas propias con unidades inventadas. Del croquis al CAD con Sketchup y AutoCAD.",
+     materiales:["Reglas","Cinta métrica","Calibre","Papel cuadriculado","Lápiz"],
+     conceptos:["Medición","Proporción áurea","Escala","Croquis","CAD básico"],
+     edades:"8-16",duracion:"2-4h",recursos:["DOCX"],links:[],campus:[]},
+    {num:"16",nombre:"Moda Tinker",gancho:"Diseña lo que llevas",cat:["arte","expresion"],color:"#d81b60",
+     desc:"Moda como tinkering: intervenir, modificar y rediseñar ropa. Telares experimentales, bordado, estampado y teñido. Lilypad Arduino para moda interactiva.",
+     materiales:["Ropa vieja","Hilo","Agujas","Tintes","Lilypad Arduino","LEDs"],
+     conceptos:["Moda sostenible","E-textil","Teñido","Bordado experimental","Upcycling moda"],
+     edades:"8-16",duracion:"3-6h",recursos:[],links:[],campus:["Carnavales 2024"]},
+    {num:"17",nombre:"Dar la Lata",gancho:"El ruido tiene forma",cat:["expresion","construccion"],color:"#e07b3a",
+     desc:"Construcción de instrumentos y objetos sonoros con latas y materiales metálicos. Escultura sonora y exploración de las propiedades del metal.",
+     materiales:["Latas de conserva","Clavos","Alambre","Martillo","Lija"],
+     conceptos:["Metalurgia básica","Sonido","Escultura","Reciclaje","Percusión"],
+     edades:"8-16",duracion:"2-4h",recursos:[],links:[],campus:[]},
+    {num:"18",nombre:"Autonomía",gancho:"Tú puedes solo",cat:["expresion"],color:"#4a78c8",
+     desc:"Taller de autonomía personal y resolución de problemas cotidianos. Pequeñas reparaciones, tareas del hogar y habilidades de vida. Empoderar a través del 'yo puedo'.",
+     materiales:["Herramientas básicas","Material de primeros auxilios","Materiales domésticos"],
+     conceptos:["Autonomía","Resolución de problemas","Habilidades de vida","Reparación"],
+     edades:"6-14",duracion:"1-3h",recursos:[],links:[],campus:[]},
+    {num:"19",nombre:"Estampados",gancho:"Deja tu marca",cat:["arte"],color:"#a8bc2a",
+     desc:"Técnicas de estampación artesanal: sellos con patata, cartón, goma EVA y linóleo. Matrices, relieves y repetición de patrones. Del sello al diseño textil y editorial.",
+     materiales:["Patatas","Goma EVA","Cartón","Tinta","Rodillo","Linóleo","Papel"],
+     conceptos:["Estampación","Matriz","Patrón","Repetición","Serigrafía básica"],
+     edades:"4-14",duracion:"1-3h",recursos:["PDF"],links:[],campus:["Matriz 2026"]},
+    {num:"20",nombre:"Montar el Circo",gancho:"Que empiece el show",cat:["expresion","construccion"],color:"#d45b6e",
+     desc:"Circo como espacio de aprendizaje total: malabares, equilibrio, marionetas y expresión corporal. Arquitectura del espectáculo y construcción de atrezzo efímero.",
+     materiales:["Clavas","Aros","Cuerdas","Tela","Pinturas faciales","Cartón"],
+     conceptos:["Malabares","Equilibrio","Marionetas","Expresión corporal","Circo social"],
+     edades:"4-14",duracion:"2-4h",recursos:["DOCX","PDF"],links:[],campus:[]},
+    {num:"21",nombre:"Patrimonio de Cantabria",gancho:"Conoce tu territorio",cat:["expresion","arte"],color:"#6b9db8",
+     desc:"Exploración del patrimonio natural y cultural de Cantabria como punto de partida creativo. Historia, arquitectura local, naturaleza y tradición como materiales de aprendizaje.",
+     materiales:["Papel","Lápices","Cámara","Material de campo"],
+     conceptos:["Patrimonio","Historia local","Identidad","Territorio","Cultura"],
+     edades:"6-14",duracion:"2-4h",recursos:["DOCX"],links:[],campus:[]},
+    {num:"22",nombre:"Experimentos Electromagnéticos",gancho:"Lo invisible que atrae",cat:["ciencia","tecnologia"],color:"#1aaa90",
+     desc:"Electricidad estática, magnetismo y electromagnetismo. Experimentos con imanes, limaduras de hierro y campos magnéticos visibles. Construcción de electroimanes y motores básicos.",
+     materiales:["Imanes","Limaduras de hierro","Cable de cobre","Pila","Clips"],
+     conceptos:["Magnetismo","Electromagnetismo","Campo magnético","Circuito eléctrico","Motor"],
+     edades:"6-14",duracion:"1-3h",recursos:["DOCX"],links:[],campus:["Campo 2026"]}
+  ];
+
+  var grid=document.getElementById("catGrid"),
+      noRes=document.getElementById("noResults"),
+      countLabel=document.getElementById("countLabel");
+
+  function renderCards(list){
+    grid.innerHTML="";
+    var v=0;
+    list.forEach(function(c){
+      v++;
+      var cats=c.cat.map(function(t){return'<span class="c-tag cat">'+t+'</span>';}).join("");
+      var mats=c.materiales.slice(0,3).map(function(m){return'<span class="c-tag">'+m+'</span>';}).join("");
+      var rec=c.recursos.length?'<span class="c-badge">'+c.recursos.length+' archivos</span>':"";
+      var camp=c.campus.length?'<span class="c-badge">'+c.campus[0]+'</span>':"";
+      var div=document.createElement("div");
+      div.className="celda-card";
+      div.style.setProperty("--cc",c.color);
+      div.innerHTML='<div class="celda-card-head"><span class="celda-num-badge">'+c.num+'</span><div class="celda-card-info"><div class="celda-nombre">'+c.nombre+'</div><div class="celda-gancho">'+c.gancho+'</div></div></div><div class="celda-card-desc">'+c.desc.substring(0,130)+'…</div><div class="celda-card-tags">'+cats+mats+'</div><div class="celda-card-foot">'+rec+camp+'</div>';
+      div.addEventListener("click",function(){openModal(c);});
+      grid.appendChild(div);
+    });
+    noRes.classList.toggle("show",v===0);
+    countLabel.textContent=v+" celdas";
+  }
+
+  renderCards(CELDAS);
+
+  var activeCat="all",searchTerm="";
+
+  document.querySelectorAll(".cat-fbtn").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      document.querySelectorAll(".cat-fbtn").forEach(function(b){b.classList.remove("on");});
+      btn.classList.add("on");
+      activeCat=btn.dataset.cat;
+      applyFilters();
+    });
+  });
+
+  document.getElementById("searchInput").addEventListener("input",function(e){
+    searchTerm=e.target.value.toLowerCase();
+    applyFilters();
+  });
+
+  function applyFilters(){
+    var filtered=CELDAS.filter(function(c){
+      var mc=activeCat==="all"||c.cat.indexOf(activeCat)>=0;
+      var hay=[c.nombre,c.gancho,c.desc].concat(c.materiales).concat(c.conceptos).join(" ").toLowerCase();
+      return mc&&(!searchTerm||hay.indexOf(searchTerm)>=0);
+    });
+    renderCards(filtered);
+  }
+
+  var modalBg=document.getElementById("modalBg"),
+      modalBody=document.getElementById("modalBody");
+
+  function openModal(c){
+    modalBg.style.setProperty("--cc",c.color);
+    var conc=c.conceptos.map(function(x){return'<span class="c-tag">'+x+'</span>';}).join("");
+    var rec=c.recursos.map(function(x){return'<span class="res-badge">'+x+'</span>';}).join("");
+    var mats=c.materiales.map(function(x){return'<li>'+x+'</li>';}).join("");
+    var camp=c.campus.map(function(x){return'<span class="c-tag">'+x+'</span>';}).join("");
+    modalBody.innerHTML=
+      '<span class="cat-modal-num">'+c.num+'</span>'+
+      '<h2 class="cat-modal-nombre">'+c.nombre+'</h2>'+
+      '<p class="cat-modal-gancho">'+c.gancho+'</p>'+
+      '<div class="cat-modal-section"><h4>Descripción</h4><p>'+c.desc+'</p></div>'+
+      '<div class="cat-modal-section"><h4>Materiales</h4><ul>'+mats+'</ul></div>'+
+      '<div class="cat-modal-section"><h4>Conceptos clave</h4><div class="cat-modal-tags">'+conc+'</div></div>'+
+      (c.campus.length?'<div class="cat-modal-section"><h4>Campus relacionados</h4><div class="cat-modal-tags">'+camp+'</div></div>':'')+
+      (c.recursos.length?'<div class="cat-modal-section"><h4>Archivos disponibles</h4>'+rec+'</div>':'')+
+      '<div class="cat-modal-section"><h4>Info práctica</h4><p>Edad: <strong>'+c.edades+' años</strong> &nbsp;|&nbsp; Duración estimada: <strong>'+c.duracion+'</strong></p></div>';
+    modalBg.classList.add("open");
+    document.body.style.overflow="hidden";
+  }
+
+  document.getElementById("modalClose").addEventListener("click",closeModal);
+  document.getElementById("modalBg").addEventListener("click",function(e){if(e.target===this)closeModal();});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeModal();});
+  function closeModal(){modalBg.classList.remove("open");document.body.style.overflow="";}
+  </script>
+<script>
+  (function(){
+    var h=document.getElementById('mainHamburger'),o=document.getElementById('wpOverlay'),c=document.getElementById('wpCloseBtn');
+    function m(){if(h)h.classList.remove('active');o.classList.remove('open');document.body.style.overflow=''}
+    function p(){if(h)h.classList.add('active');o.classList.add('open');document.body.style.overflow='hidden'}
+    if(h){h.addEventListener('click',function(){o.classList.contains('open')?m():p()})}
+    if(c)c.addEventListener('click',m);
+    o.querySelectorAll('a').forEach(function(a){a.addEventListener('click',m)});
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kit Lógica Recíproca | Coloniales — Construcción, geometría y equilibrio</title>
+  <meta name="description" content="Kit de construcción Lógica Recíproca de Coloniales: estructuras autoportantes, domos y tensegridades para explorar arquitectura y pensamiento espacial. Para casa, aula y talleres.">
+  <link rel="canonical" href="https://tallerescoloniales.com/kits-construccion-logica-reciproca/">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./col26-system.css">
+  <style>
+    .col26-faq-item summary { font-weight:800; font-size:1rem; cursor:pointer; padding:16px 0; border-bottom:1px solid var(--line); list-style:none; }
+    .col26-faq-item summary::-webkit-details-marker { display:none; }
+    .col26-faq-item[open] summary { color:var(--mag); }
+    .col26-faq-item p { color:#b0b0b0; line-height:1.8; padding:12px 0 16px; }
+    .kit-stat { text-align:center; }
+    .kit-stat strong { display:block; font-size:2.5rem; font-weight:900; color:var(--mag); line-height:1; }
+    .kit-stat span { font-size:.65rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#aaa; }
+    .check-list { list-style:none; padding:0; }
+    .check-list li { padding:10px 0; border-bottom:1px solid var(--line); font-size:.9rem; color:var(--muted); display:flex; gap:10px; align-items:flex-start; }
+    .check-list li::before { content:"→"; color:var(--mag); font-weight:900; flex-shrink:0; }
+  </style>
+</head>
+<body class="col26-body">
+<div class="col26-page">
+
+  <!-- Menú Principal (igual en todas las páginas) -->
+  <header class="main-header">
+    <a class="logo" href="index.html">Colonial<em>es</em></a>
+      <nav class="main-nav">        <a href="index.html">Inicio</a>
+        <div class="nav-dropdown">
+          <a href="sobre-nosotros-2026.html" class="nav-dropdown-trigger">Sobre…</a>
+          <div class="nav-dropdown-content">
+            <a href="sobre-nosotros-2026.html">Sobre Coloniales</a>
+            <a href="sobre-nosotros-2026.html#alejandro">Sobre mí</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="programas.html" class="nav-dropdown-trigger">Programas</a>
+          <div class="nav-dropdown-content">
+            <a href="campus-2026.html">Campus</a>
+            <a href="enfamilia-2026.html">En familia</a>
+            <a href="extra-2026.html">Extra</a>
+            <a href="coles-2026.html">Nómadas</a>
+            <a href="toma-la-calle-2026.html">Toma la calle</a>
+          </div>
+        </div>
+        <a href="campus-2026.html">Campus</a>
+        <a href="celdas3.html">Celdas</a>
+        <a href="#diario">Blog</a>
+        <div class="nav-dropdown">
+          <a href="kit-logica-reciproca-2026.html" class="nav-dropdown-trigger">Kits</a>
+          <div class="nav-dropdown-content">
+            <a href="hexa.html">Hexa</a>
+            <a href="domiko.html">Domiko</a>
+            <a href="duomo.html">Duomo</a>
+            <a href="leopalos.html">Leopalos</a>
+          </div>
+        </div>
+        <a href="#contacto">Contacto</a></nav>
+    <div style="display:flex;align-items:center;gap:6px">
+        
+      <button class="main-hamburger" id="mainHamburger"><span></span> Menú</button>
+    </div>
+  </header>
+
+  <!-- Submenú de navegación interna -->
+  <header class="col26-topbar">
+    <div class="col26-wrap col26-topbar-inner">
+      <a class="col26-topbar-title" href="#">Kits constructivos</a>
+      <div class="col26-nav-scroll-wrapper">
+        <nav class="col26-nav">
+          
+          <a href="#que-es">Qué es</a>
+          <a href="#kits">Kits</a>
+          <a href="#incluye">Qué incluye</a>
+          <a href="#activa">Qué activa</a>
+          <a href="#uso">Cómo se usa</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Overlay menú móvil -->
+    <div class="wp-overlay" id="wpOverlay">
+      <button class="wp-overlay-close" id="wpCloseBtn">✕ Cerrar</button>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <div class="wp-toggle-group">
+        <a href="sobre-nosotros-2026.html" class="wp-cat">Sobre Coloniales</a>
+        <div class="wp-sub">
+            <a href="sobre-nosotros-2026.html">Sobre Coloniales</a>
+            <a href="sobre-nosotros-2026.html#alejandro">Sobre mí</a>
+        </div>
+        </div>
+        <div class="wp-toggle-group">
+        <a href="programas.html" class="wp-cat">Programas</a>
+        <div class="wp-sub">
+            <a href="campus-2026.html">Campus</a>
+            <a href="enfamilia-2026.html">En familia</a>
+            <a href="extra-2026.html">Extra</a>
+            <a href="coles-2026.html">Nómadas</a>
+            <a href="toma-la-calle-2026.html">Toma la calle</a>
+        </div>
+        </div>
+        <a href="campus-2026.html">Campus</a>
+        <a href="celdas3.html">Celdas</a>
+        <a href="#diario">Blog</a>
+        <div class="wp-toggle-group">
+        <a href="kit-logica-reciproca-2026.html" class="wp-cat">Kits constructivos</a>
+        <div class="wp-sub">
+            <a href="hexa.html">Hexa</a>
+            <a href="domiko.html">Domiko</a>
+            <a href="duomo.html">Duomo</a>
+            <a href="leopalos.html">Leopalos</a>
+        </div>
+        </div>
+        <a href="#contacto">Contacto</a>
+        <div class="wp-overlay-social">
+          <a href="https://wa.me/34625039565" target="_blank">WhatsApp</a>
+          <a href="https://instagram.com/tallerescoloniales" target="_blank">Instagram</a>
+          <a href="https://facebook.com/tallerescoloniales" target="_blank">Facebook</a>
+        </div>
+      </nav>
+    </div>
+
+  <!-- Hero -->
+  <section class="col26-hero">
+    <div class="col26-wrap col26-hero-grid">
+      <div class="col26-hero-copy col26-reveal">
+        <p class="col26-kicker">Kit educativo · <strong>6-16 años</strong> · Celda 01</p>
+        <h1>Lógica <span>Recíproca</span></h1>
+        <p>Estructuras autoportantes donde cada pieza depende de las demás. No hay instrucciones cerradas: hay una pregunta poderosa que cada niño o niña resuelve de manera diferente con los mismos materiales.</p>
+        <div class="col26-actions">
+          <a class="col26-btn col26-btn-primary" href="https://wa.me/34625039565" target="_blank" rel="noopener noreferrer">Pedir información</a>
+          <a class="col26-btn col26-btn-outline" href="#incluye">Ver el kit</a>
+        </div>
+        <div class="col26-stats" style="margin-top:32px;">
+          <div class="kit-stat"><strong>3</strong><span>Entornos de uso</span></div>
+          <div class="kit-stat"><strong>6-16</strong><span>Años</span></div>
+          <div class="kit-stat"><strong>∞</strong><span>Soluciones posibles</span></div>
+        </div>
+      </div>
+      <div class="col26-photo-stack col26-reveal" data-parallax-stack>
+        <div class="col26-photo-card col26-photo-a"><img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/4-nodo-Pequeno.jpg" alt="Lógica Recíproca — estructuras de nodos"></div>
+        <div class="col26-photo-card col26-photo-b"><img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/7-matriz-Pequeno.jpg" alt="Geometría y conexiones"></div>
+        <div class="col26-photo-card col26-photo-c"><img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/8-campo-Pequeno-rotated.jpg" alt="Construcción espacial en taller"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rail de palabras clave -->
+  <section class="col26-rail" aria-label="Ideas clave">
+    <div class="col26-rail-track">
+      <span class="col26-rail-item">Arquitectura</span><span class="col26-rail-sep">/</span>
+      <span class="col26-rail-item">Equilibrio</span><span class="col26-rail-sep">/</span>
+      <span class="col26-rail-item">Tensegridad</span><span class="col26-rail-sep">/</span>
+      <span class="col26-rail-item">Domos geodésicos</span><span class="col26-rail-sep">/</span>
+      <span class="col26-rail-item">Geometría espacial</span><span class="col26-rail-sep">/</span>
+      <span class="col26-rail-item">Palos de Leonardo</span><span class="col26-rail-sep">/</span>
+      <span class="col26-rail-item">Construcción libre</span><span class="col26-rail-sep">/</span>
+      <span class="col26-rail-item">Arquitectura</span><span class="col26-rail-sep">/</span>
+      <span class="col26-rail-item">Equilibrio</span><span class="col26-rail-sep">/</span>
+      <span class="col26-rail-item">Tensegridad</span><span class="col26-rail-sep">/</span>
+      <span class="col26-rail-item">Domos geodésicos</span><span class="col26-rail-sep">/</span>
+      <span class="col26-rail-item">Geometría espacial</span>
+    </div>
+  </section>
+
+  <!-- 01 / Qué es -->
+  <section class="col26-section" id="que-es">
+    <div class="col26-wrap">
+      <div class="col26-head col26-reveal"><span class="col26-num">01 /</span><h2 class="col26-title">Qué <span>Es</span></h2></div>
+      <div class="col26-grid-2">
+        <div class="col26-panel col26-reveal">
+          <h3>Construcción que piensa en conjunto</h3>
+          <p>Lógica Recíproca convierte una idea arquitectónica compleja —la estructura recíproca, donde cada elemento apoya al siguiente en un círculo cerrado— en una experiencia física, comprensible y muy atractiva.</p>
+          <p>Aquí no se trata de apilar piezas sin más. Se trata de descubrir cómo aparecen la estabilidad, la tensión y la forma cuando las partes se necesitan entre sí. Eso es lo que activa: la pregunta de cómo algo se sostiene.</p>
+        </div>
+        <div class="col26-panel col26-reveal">
+          <h3>Lo que lo hace distinto</h3>
+          <ul class="check-list">
+            <li><strong>Sin pantalla</strong> — manos, cuerpo, prueba, caída y reconstrucción.</li>
+            <li><strong>Escalable</strong> — funciona desde primeros tanteos de 6 años hasta retos técnicos en secundaria.</li>
+            <li><strong>Transversal</strong> — arquitectura, ciencia, geometría, arte y trabajo cooperativo al mismo tiempo.</li>
+            <li><strong>Muy visual</strong> — genera estructuras llamativas que invitan a parar, mirar y seguir probando.</li>
+            <li><strong>Sin caducidad</strong> — no se acaba. Cada vez que lo sacas aparecen soluciones nuevas.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 / Los 4 Kits -->
+  <section class="col26-section" id="kits">
+    <div class="col26-wrap">
+      <div class="col26-head col26-reveal"><span class="col26-num">02 /</span><h2 class="col26-title">Los 4 <span>Kits</span></h2></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px">
+        <a href="hexa.html" style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;transition:box-shadow .3s" onmouseover="this.style.boxShadow='0 8px 30px rgba(0,0,0,.1)'" onmouseout="this.style.boxShadow='none'">
+          <img src="https://tallerescoloniales.com/wp-content/uploads/2023/04/HEXA-kit-construccion-logica-reciproca-talleres-coloniales.jpg" alt="Hexa" style="width:100%;aspect-ratio:1;object-fit:cover;display:block">
+          <div style="padding:14px">
+            <span style="font-size:.58rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mag)">Kit 01</span>
+            <h3 style="font-size:1rem;font-weight:900;text-transform:uppercase;margin:4px 0 2px;letter-spacing:.06em">Hexa</h3>
+            <span style="font-size:.72rem;font-weight:700;color:#888">35,50 €</span>
+          </div>
+        </a>
+        <a href="domiko.html" style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;transition:box-shadow .3s" onmouseover="this.style.boxShadow='0 8px 30px rgba(0,0,0,.1)'" onmouseout="this.style.boxShadow='none'">
+          <img src="https://tallerescoloniales.com/wp-content/uploads/2023/04/DOMIKO-kit-construccion-logica-reciproca-talleres-coloniales.jpg" alt="Domiko" style="width:100%;aspect-ratio:1;object-fit:cover;display:block">
+          <div style="padding:14px">
+            <span style="font-size:.58rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mag)">Kit 02</span>
+            <h3 style="font-size:1rem;font-weight:900;text-transform:uppercase;margin:4px 0 2px;letter-spacing:.06em">Domiko</h3>
+            <span style="font-size:.72rem;font-weight:700;color:#888">90 €</span>
+          </div>
+        </a>
+        <a href="duomo.html" style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;transition:box-shadow .3s" onmouseover="this.style.boxShadow='0 8px 30px rgba(0,0,0,.1)'" onmouseout="this.style.boxShadow='none'">
+          <img src="https://tallerescoloniales.com/wp-content/uploads/2023/04/DUOMO-kit-construccion-logica-reciproca-talleres-coloniales.jpg" alt="Duomo" style="width:100%;aspect-ratio:1;object-fit:cover;display:block">
+          <div style="padding:14px">
+            <span style="font-size:.58rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mag)">Kit 03</span>
+            <h3 style="font-size:1rem;font-weight:900;text-transform:uppercase;margin:4px 0 2px;letter-spacing:.06em">Duomo</h3>
+            <span style="font-size:.72rem;font-weight:700;color:#888">180 €</span>
+          </div>
+        </a>
+        <a href="leopalos.html" style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;transition:box-shadow .3s" onmouseover="this.style.boxShadow='0 8px 30px rgba(0,0,0,.1)'" onmouseout="this.style.boxShadow='none'">
+          <img src="https://tallerescoloniales.com/wp-content/uploads/2023/04/LEOPALOS-kit-construccion-logica-reciproca-talleres-coloniales.jpg" alt="Leopalos" style="width:100%;aspect-ratio:1;object-fit:cover;display:block">
+          <div style="padding:14px">
+            <span style="font-size:.58rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mag)">Kit 04</span>
+            <h3 style="font-size:1rem;font-weight:900;text-transform:uppercase;margin:4px 0 2px;letter-spacing:.06em">Leopalos</h3>
+            <span style="font-size:.72rem;font-weight:700;color:#888">Consultar</span>
+          </div>
+        </a>
+      </div>
+      <style>
+        @media(max-width:768px){#kits .col26-wrap>div:last-child{grid-template-columns:repeat(2,1fr)!important}}
+        @media(max-width:480px){#kits .col26-wrap>div:last-child{grid-template-columns:1fr!important}}
+      </style>
+    </div>
+  </section>
+
+  <!-- 03 / Qué incluye -->
+  <section class="col26-section col26-section-dark" id="incluye">
+    <div class="col26-wrap">
+      <div class="col26-head col26-reveal"><span class="col26-num">03 /</span><h2 class="col26-title">Qué Incluye <span>La Experiencia</span></h2></div>
+      <p class="col26-lead col26-reveal">Más que una caja de piezas, es un sistema de construcción abierto con tres capas de uso.</p>
+      <div class="col26-spec-grid">
+        <article class="col26-spec col26-reveal">
+          <strong>Palos y conectores</strong>
+          <p>Elementos lineales (listones de madera, tubos PVC o bambú) y conectores para generar estructuras ligeras, autoportantes y con distintas escalas de complejidad. Los mismos materiales de los talleres, fabricados en Coloniales.</p>
+        </article>
+        <article class="col26-spec col26-reveal">
+          <strong>Retos abiertos</strong>
+          <p>Tarjetas de provocación que proponen desafíos concretos: levantar un domo, crear una cúpula habitable, construir el puente más largo o la torre más alta sin clavos ni pegamento.</p>
+        </article>
+        <article class="col26-spec col26-reveal">
+          <strong>Guía de activación</strong>
+          <p>Documentación para que familias, docentes o mediadores puedan sacarle todo el recorrido posible, desde la exploración libre hasta propuestas STEAM y arquitectura efímera.</p>
+        </article>
+      </div>
+      <div class="col26-panel col26-panel-dark col26-reveal" style="margin-top:24px">
+        <h3>De la pieza al espacio</h3>
+        <p>Lo mejor es que no se agota rápido. Empieza siendo un juego de construcción ampliado y puede acabar convirtiéndose en un laboratorio de arquitectura, una instalación efímera o una dinámica de grupo intergeneracional.</p>
+        <div class="col26-data-grid" style="margin-top:20px;">
+          <div><b class="col26-mini">Materiales</b><span>Palos, cuerdas, Strawbees, Bridas, Tubos PVC</span></div>
+          <div><b class="col26-mini">Entorno</b><span>Casa, aula, campus o evento</span></div>
+          <div><b class="col26-mini">Celda</b><span>01 · Lógica Recíproca</span></div>
+          <div><b class="col26-mini">Duración</b><span>2-4 horas por sesión</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 / Qué activa -->
+  <section class="col26-section col26-section-cream" id="activa">
+    <div class="col26-wrap">
+      <div class="col26-head col26-reveal"><span class="col26-num">04 /</span><h2 class="col26-title">Qué Activa <span>En Quien Lo Usa</span></h2></div>
+      <div class="col26-grid-3">
+        <article class="col26-card col26-reveal">
+          <div class="col26-card-body">
+            <span class="col26-card-meta">Pensamiento espacial</span>
+            <h3>Ver la estructura antes de acabarla</h3>
+            <p>Ayuda a imaginar apoyos, vacíos, tensiones y forma. Es una puerta muy buena a la arquitectura sin tecnicismos pesados.</p>
+          </div>
+        </article>
+        <article class="col26-card col26-reveal">
+          <div class="col26-card-body">
+            <span class="col26-card-meta">Error productivo</span>
+            <h3>Caerse también enseña</h3>
+            <p>Las pruebas fallidas forman parte del aprendizaje. Cada colapso explica algo sobre peso, orden, secuencia y equilibrio.</p>
+          </div>
+        </article>
+        <article class="col26-card col26-reveal">
+          <div class="col26-card-body">
+            <span class="col26-card-meta">Cooperación</span>
+            <h3>Nadie sostiene solo</h3>
+            <p>El propio sistema obliga a coordinarse, esperar, ajustar y mirar lo que hace el otro. La lógica recíproca también es social.</p>
+          </div>
+        </article>
+      </div>
+      <!-- Photo rail -->
+      <div class="col26-photo-rail col26-reveal" style="margin-top:32px;">
+        <div class="col26-photo-rail-track">
+          <img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/4-nodo-Pequeno.jpg" alt="Niñas y niños construyendo estructuras recíprocas">
+          <img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/5-membranas-Pequeno.jpg" alt="Experimentación material y espacial">
+          <img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/7-matriz-Pequeno.jpg" alt="Patrones y geometría en Coloniales">
+          <img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/8-campo-Pequeno-rotated.jpg" alt="Taller espacial en grupo">
+          <img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/10-simbiosis-Pequeno.jpg" alt="Construcción cooperativa">
+          <img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/4-nodo-Pequeno.jpg" alt="Nodos y estructuras">
+          <img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/5-membranas-Pequeno.jpg" alt="Membranas y materiales">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 / Cómo se usa -->
+  <section class="col26-section" id="uso">
+    <div class="col26-wrap">
+      <div class="col26-head col26-reveal"><span class="col26-num">05 /</span><h2 class="col26-title">Cómo Se <span>Puede Usar</span></h2></div>
+      <div class="col26-steps">
+        <article class="col26-step col26-reveal">
+          <span class="col26-step-number">01</span>
+          <h3>Explorar</h3>
+          <p>Tocar las piezas, probar apoyos, montar pequeñas células y descubrir cuándo una estructura empieza a sostenerse por sí sola.</p>
+        </article>
+        <article class="col26-step col26-reveal">
+          <span class="col26-step-number">02</span>
+          <h3>Retar</h3>
+          <p>Plantear objetivos concretos: levantar un domo, crear un refugio, resolver una unión difícil o construir una forma determinada.</p>
+        </article>
+        <article class="col26-step col26-reveal">
+          <span class="col26-step-number">03</span>
+          <h3>Habitar</h3>
+          <p>Llevar la construcción hacia el cuerpo, el espacio y el grupo. Pasar del objeto a la experiencia es donde esta celda brilla de verdad.</p>
+        </article>
+      </div>
+      <div class="col26-grid-2" style="margin-top:32px;">
+        <div class="col26-panel col26-reveal">
+          <h3>En casa</h3>
+          <p>Material de juego abierto para niñas y niños que disfrutan construyendo, imaginando formas o repitiendo una misma idea hasta dominarla. Sin pilas, sin pantalla, sin límite de tiempo.</p>
+        </div>
+        <div class="col26-panel col26-reveal">
+          <h3>En aula o taller</h3>
+          <p>Ideal para propuestas de arquitectura, STEAM, geometría, instalación artística, trabajo cooperativo o diseño efímero. Ha funcionado muy bien en campus de verano, extraescolares y talleres en centros educativos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 / FAQ -->
+  <section class="col26-section col26-section-dark" id="faq">
+    <div class="col26-wrap">
+      <div class="col26-head col26-reveal"><span class="col26-num">06 /</span><h2 class="col26-title">¿?</h2></div>
+      <div class="col26-faq col26-reveal">
+        <details class="col26-faq-item"><summary>¿Para qué edades está pensado?</summary><p>Desde unos 6 años con acompañamiento ligero. En primaria y secundaria gana mucho recorrido técnico. Funciona igualmente bien en talleres intergeneracionales donde adultos y niños construyen juntos.</p></details>
+        <details class="col26-faq-item"><summary>¿Es un juguete cerrado o un material abierto?</summary><p>Material abierto. Puede venir acompañado de retos o provocaciones, pero su valor está en que permite múltiples soluciones. No hay una manera correcta de usarlo.</p></details>
+        <details class="col26-faq-item"><summary>¿Sirve para colegios o solo para familias?</summary><p>Para ambos. Su potencial crece mucho en entornos grupales: talleres de arquitectura, experiencias STEAM, campamentos, campus de verano o dinámicas cooperativas en centros educativos.</p></details>
+        <details class="col26-faq-item"><summary>¿Cómo lo compro o encargo?</summary><p>Los kits se producen de forma artesanal en el taller de Coloniales. Escríbenos por WhatsApp o rellena el formulario para informarte de disponibilidad y precios según el formato que necesites.</p></details>
+        <details class="col26-faq-item"><summary>¿Cómo conecta con el resto de Coloniales?</summary><p>Es la versión tangible y portable de la Celda 01. Si quieres explorar más celdas, apuntarte a la extraescolar o traer un taller a tu centro, podemos combinar el kit con una propuesta completa.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="col26-section" id="contacto">
+    <div class="col26-wrap">
+      <div class="col26-cta col26-reveal">
+        <h2 class="col26-title">¿Quieres Activar Lógica Recíproca?</h2>
+        <p>Como kit para casa, como taller en un centro educativo o como propuesta para un campus. Esta página puede ser también la puerta de entrada a todo el universo Coloniales.</p>
+        <div class="col26-actions">
+          <a class="col26-btn col26-btn-primary" href="https://wa.me/34625039565" target="_blank" rel="noopener noreferrer">WhatsApp · 625 039 565</a>
+          <a class="col26-btn col26-btn-outline" href="./celdas3.html">Ver las 22 celdas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="./col26-system.js"></script>
+
+
+</body>
+</html>
