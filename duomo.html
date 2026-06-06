@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DUOMO | Kit de Construcción Lógica Recíproca</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./col26-system.css">
+  <style>
+    .kit-photo img{max-width:100%;height:auto;border-radius:8px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
+    .kit-features ul{list-style:none;padding:0}
+    .kit-features li{margin-bottom:10px;color:var(--muted)}
+    .kit-features li strong{color:var(--dark)}
+    .col26-grid-50{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    @media(max-width:860px){.col26-grid-50{grid-template-columns:1fr}}
+  </style>
+</head>
+<body class="col26-body">
+  <div class="col26-page">
+    <!-- Menú Principal (igual en todas las páginas) -->
+    <header class="main-header">
+      <a class="logo" href="index.html">Colonial<em>es</em></a>
+      <nav class="main-nav">        <a href="index.html">Inicio</a>
+        <div class="nav-dropdown">
+          <a href="sobre-nosotros-2026.html" class="nav-dropdown-trigger">Sobre…</a>
+          <div class="nav-dropdown-content">
+            <a href="sobre-nosotros-2026.html">Sobre Coloniales</a>
+            <a href="sobre-nosotros-2026.html#alejandro">Sobre mí</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="programas.html" class="nav-dropdown-trigger">Programas</a>
+          <div class="nav-dropdown-content">
+            <a href="campus-2026.html">Campus</a>
+            <a href="enfamilia-2026.html">En familia</a>
+            <a href="extra-2026.html">Extra</a>
+            <a href="coles-2026.html">Nómadas</a>
+            <a href="toma-la-calle-2026.html">Toma la calle</a>
+          </div>
+        </div>
+        <a href="campus-2026.html">Campus</a>
+        <a href="celdas3.html">Celdas</a>
+        <a href="#diario">Blog</a>
+        <div class="nav-dropdown">
+          <a href="kit-logica-reciproca-2026.html" class="nav-dropdown-trigger">Kits</a>
+          <div class="nav-dropdown-content">
+            <a href="hexa.html">Hexa</a>
+            <a href="domiko.html">Domiko</a>
+            <a href="duomo.html">Duomo</a>
+            <a href="leopalos.html">Leopalos</a>
+          </div>
+        </div>
+        <a href="#contacto">Contacto</a></nav>
+      <div style="display:flex;align-items:center;gap:6px">
+        <button class="main-hamburger" id="mainHamburger"><span></span> Menú</button>
+      </div>
+    </header>
+
+    <!-- Submenú de navegación interna -->
+    <header class="col26-topbar">
+      <div class="col26-wrap col26-topbar-inner">
+        <a class="col26-topbar-title" href="#">Duomo</a>
+        <div class="col26-nav-scroll-wrapper">
+          <nav class="col26-nav">
+            <a href="kit-logica-reciproca-2026.html">Kits</a>
+            <a href="hexa.html">Hexa</a>
+            <a href="domiko.html">Domiko</a>
+            <a href="duomo.html">Duomo</a>
+            <a href="leopalos.html">Leopalos</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Overlay menú móvil -->
+    <div class="wp-overlay" id="wpOverlay">
+      <button class="wp-overlay-close" id="wpCloseBtn">✕ Cerrar</button>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <div class="wp-toggle-group">
+        <a href="sobre-nosotros-2026.html" class="wp-cat">Sobre Coloniales</a>
+        <div class="wp-sub">
+            <a href="sobre-nosotros-2026.html">Sobre Coloniales</a>
+            <a href="sobre-nosotros-2026.html#alejandro">Sobre mí</a>
+        </div>
+        </div>
+        <div class="wp-toggle-group">
+        <a href="programas.html" class="wp-cat">Programas</a>
+        <div class="wp-sub">
+            <a href="campus-2026.html">Campus</a>
+            <a href="enfamilia-2026.html">En familia</a>
+            <a href="extra-2026.html">Extra</a>
+            <a href="coles-2026.html">Nómadas</a>
+            <a href="toma-la-calle-2026.html">Toma la calle</a>
+        </div>
+        </div>
+        <a href="campus-2026.html">Campus</a>
+        <a href="celdas3.html">Celdas</a>
+        <a href="#diario">Blog</a>
+        <div class="wp-toggle-group">
+        <a href="kit-logica-reciproca-2026.html" class="wp-cat">Kits constructivos</a>
+        <div class="wp-sub">
+            <a href="hexa.html">Hexa</a>
+            <a href="domiko.html">Domiko</a>
+            <a href="duomo.html">Duomo</a>
+            <a href="leopalos.html">Leopalos</a>
+        </div>
+        </div>
+        <a href="#contacto">Contacto</a>
+        <div class="wp-overlay-social">
+          <a href="https://wa.me/34625039565" target="_blank">WhatsApp</a>
+          <a href="https://instagram.com/tallerescoloniales" target="_blank">Instagram</a>
+          <a href="https://facebook.com/tallerescoloniales" target="_blank">Facebook</a>
+        </div>
+      </nav>
+    </div>
+
+    <section class="col26-section">
+      <div class="col26-wrap col26-grid-50">
+        <div class="kit-content">
+          <span class="col26-num">KIT 03 /</span>
+          <h1 class="col26-title" style="color:var(--mag)">DUOMO</h1>
+          <div style="display:flex;align-items:center;gap:12px;margin:8px 0 16px">
+            <span style="font-size:1.6rem;font-weight:900;color:var(--mag)">180€</span>
+            <span style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);background:var(--col26-soft);padding:4px 10px;border-radius:20px">En stock</span>
+          </div>
+          <p style="font-size:1.05rem;line-height:1.8;color:var(--muted)">Duomo es un domo geodésico donde dentro cabe un mundo de posibilidades. Cada construcción es una experiencia que invita a explorar la geometría, la estabilidad y la imaginación. Su alternativa: construir dos Domikos independientes, dos pequeños refugios para inventar historias.</p>
+          <a href="https://wa.me/34625039565?text=Me%20interesa%20el%20kit%20DUOMO" class="col26-btn col26-btn-primary">Comprar Kit DUOMO</a>
+        </div>
+        <div class="kit-photo">
+          <img src="https://tallerescoloniales.com/wp-content/uploads/2023/04/DUOMO-kit-construccion-logica-reciproca-talleres-coloniales.jpg" alt="Kit DUOMO de construcción">
+        </div>
+      </div>
+    </section>
+
+    <section class="col26-section col26-section-cream">
+      <div class="col26-wrap">
+        <div class="col26-head col26-reveal"><span class="col26-num">Características /</span><h2 class="col26-title">Técnicas</h2></div>
+        <div class="col26-data-grid">
+          <div><b>Edad</b><span>+8 años</span></div>
+          <div><b>Construcción</b><span>Cúpula geodésica 2V</span></div>
+          <div><b>Material</b><span>Haya, acero y PVC</span></div>
+          <div><b>Medidas</b><span>Radio 1,80 m</span></div>
+        </div>
+        <div class="col26-data-grid" style="margin-top:2px">
+          <div><b>Palos A</b><span>35 uds</span></div>
+          <div><b>Palos B</b><span>30 uds</span></div>
+          <div><b>Conectores</b><span>26 uds</span></div>
+          <div><b>Alternativa</b><span>2 Domikos independientes</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="col26-section col26-section-dark">
+      <div class="col26-wrap">
+        <div class="col26-head col26-reveal"><span class="col26-num">Beneficios /</span><h2 class="col26-title">Educativos</h2></div>
+        <div class="col26-grid-2">
+          <div class="col26-panel col26-panel-dark"><h3>🌐 Geometría vivida</h3><p>Experimentar la forma y estructura de una cúpula geodésica de forma tangible.</p></div>
+          <div class="col26-panel col26-panel-dark"><h3>🧩 Pensamiento espacial</h3><p>Comprender proporciones, equilibrio y frecuencias de domos (1V vs 2V).</p></div>
+          <div class="col26-panel col26-panel-dark"><h3>🎭 Creatividad y juego</h3><p>Transformar la cúpula en refugio, casa o escenario de infinitas aventuras.</p></div>
+          <div class="col26-panel col26-panel-dark"><h3>🤲 Cooperación</h3><p>Fomenta el trabajo en equipo, la toma de decisiones compartida y la motricidad fina.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="col26-section col26-section-dark" id="faq">
+      <div class="col26-wrap">
+        <div class="col26-head col26-reveal"><span class="col26-num">FAQ /</span><h2 class="col26-title">¿?</h2></div>
+        <div class="col26-faq col26-reveal">
+          <details class="col26-faq-item"><summary>¿Cuánto mide montado?</summary><p>Radio de 1,80 m, un espacio amplio donde pueden jugar varios niños.</p></details>
+          <details class="col26-faq-item"><summary>¿Se puede usar como dos Domikos?</summary><p>Sí, es una de las opciones: puedes construir un gran domo o dos Domikos independientes con las mismas piezas.</p></details>
+          <details class="col26-faq-item"><summary>¿Requiere supervisión de un adulto?</summary><p>Se recomienda para mayores de 8 años, aunque el montaje puede hacerse en familia o con acompañamiento.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="col26-section" id="contacto">
+      <div class="col26-wrap">
+        <div class="col26-cta col26-reveal">
+          <h2 class="col26-title">¿Hablamos?</h2>
+          <p>Si tienes dudas sobre el kit, cómo funciona o quieres saber más, escríbenos por WhatsApp.</p>
+          <div class="col26-actions">
+            <a class="col26-btn col26-btn-primary" href="https://wa.me/34625039565" target="_blank" rel="noopener noreferrer">WhatsApp directo</a>
+            <a class="col26-btn col26-btn-outline" href="mailto:hola@tallerescoloniales.com">Escribir email</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <script src="./col26-system.js"></script>
+
+
+
+</body>
+</html>
