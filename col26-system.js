@@ -104,12 +104,26 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Overlay menú móvil
-  try{(function(){
-    var h=document.getElementById('mainHamburger'),o=document.getElementById('wpOverlay'),c=document.getElementById('wpCloseBtn');
-    function m(){if(h)h.classList.remove('active');o.classList.remove('open');document.body.style.overflow=''}
-    function p(){if(h)h.classList.add('active');o.classList.add('open');document.body.style.overflow='hidden'}
-    if(h){h.addEventListener('click',function(){o.classList.contains('open')?m():p()})}
-    if(c)c.addEventListener('click',m);
-    o.querySelectorAll('a').forEach(function(a){a.addEventListener('click',m)});
-  })();}catch(e){}
+  var hamburger = document.getElementById("mainHamburger");
+  var overlay = document.getElementById("wpOverlay");
+  var closeButton = document.getElementById("wpCloseBtn");
+  if (hamburger && overlay) {
+    function closeMenu() {
+      hamburger.classList.remove("active");
+      overlay.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+    function openMenu() {
+      hamburger.classList.add("active");
+      overlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    hamburger.addEventListener("click", function () {
+      overlay.classList.contains("open") ? closeMenu() : openMenu();
+    });
+    if (closeButton) closeButton.addEventListener("click", closeMenu);
+    overlay.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+  }
 });

@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LEOPALOS | Kit de Construcción Lógica Recíproca</title>
+  <title>LEOPALOS | Kit de Construcción Lógica Recíproca — Coloniales</title>
+  <meta name="description" content="LeoPalos nos invita a descubrir los secretos de las estructuras de Leonardo Da Vinci: cúpulas autoportantes que se sostienen sin tornillos ni adhesivos, solo por su peso y la gravedad.">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./col26-system.css">
   <style>
-    .kit-photo img{max-width:100%;height:auto;border-radius:8px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
-    .kit-features ul{list-style:none;padding:0}
-    .kit-features li{margin-bottom:10px;color:var(--muted)}
-    .kit-features li strong{color:var(--dark)}
-    .col26-grid-50{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-    @media(max-width:860px){.col26-grid-50{grid-template-columns:1fr}}
+    .kit-gallery img{width:100%;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.12);display:block}
+    .kit-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+    .kit-product-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:48px}
+    .kit-product-layout .kit-gallery{grid-column:1;grid-row:1}
+    .kit-product-layout>.col26-reveal:last-child{grid-column:2;grid-row:1}
+    @media(max-width:980px){.kit-product-layout{grid-template-columns:1fr;gap:28px}.kit-product-layout .kit-gallery,.kit-product-layout>.col26-reveal:last-child{grid-column:1;grid-row:auto}}
   </style>
 </head>
 <body class="col26-body">
@@ -21,28 +22,13 @@
     <header class="main-header">
       <a class="logo" href="index.html">Colonial<em>es</em></a>
       <nav class="main-nav">        <a href="index.html">Inicio</a>
+        <a href="sobre-nosotros.html">Sobre…</a>
+        <div class="nav-dropdown"><span class="nav-dropdown-trigger">Programas</span><div class="nav-dropdown-content">
+            <a href="campus.html">Campus</a><a href="enfamilia.html">En familia</a><a href="extra.html">Extra</a><a href="coles.html">Nómadas</a><a href="toma-la-calle.html">Toma la calle</a>
+        </div></div>
+        <a href="celdas.html">Celdas</a>
         <div class="nav-dropdown">
-          <a href="sobre-nosotros-2026.html" class="nav-dropdown-trigger">Sobre…</a>
-          <div class="nav-dropdown-content">
-            <a href="sobre-nosotros-2026.html">Sobre Coloniales</a>
-            <a href="sobre-nosotros-2026.html#alejandro">Sobre mí</a>
-          </div>
-        </div>
-        <div class="nav-dropdown">
-          <a href="programas.html" class="nav-dropdown-trigger">Programas</a>
-          <div class="nav-dropdown-content">
-            <a href="campus-2026.html">Campus</a>
-            <a href="enfamilia-2026.html">En familia</a>
-            <a href="extra-2026.html">Extra</a>
-            <a href="coles-2026.html">Nómadas</a>
-            <a href="toma-la-calle-2026.html">Toma la calle</a>
-          </div>
-        </div>
-        <a href="campus-2026.html">Campus</a>
-        <a href="celdas3.html">Celdas</a>
-        <a href="#diario">Blog</a>
-        <div class="nav-dropdown">
-          <a href="kit-logica-reciproca-2026.html" class="nav-dropdown-trigger">Kits</a>
+          <a href="kit-logica-reciproca.html" class="nav-dropdown-trigger">Kits</a>
           <div class="nav-dropdown-content">
             <a href="hexa.html">Hexa</a>
             <a href="domiko.html">Domiko</a>
@@ -62,11 +48,12 @@
         <a class="col26-topbar-title" href="#">Leopalos</a>
         <div class="col26-nav-scroll-wrapper">
           <nav class="col26-nav">
-            <a href="kit-logica-reciproca-2026.html">Kits</a>
+            <a href="kit-logica-reciproca.html">Kits</a>
             <a href="hexa.html">Hexa</a>
             <a href="domiko.html">Domiko</a>
             <a href="duomo.html">Duomo</a>
             <a href="leopalos.html">Leopalos</a>
+            <a href="#faq">Preguntas</a>
           </nav>
         </div>
       </div>
@@ -77,28 +64,13 @@
       <button class="wp-overlay-close" id="wpCloseBtn">✕ Cerrar</button>
       <nav>
         <a href="index.html">Inicio</a>
+        <a href="sobre-nosotros.html">Sobre…</a>
+        <div class="wp-toggle-group"><span class="wp-cat">Programas</span><div class="wp-sub">
+            <a href="campus.html">Campus</a><a href="enfamilia.html">En familia</a><a href="extra.html">Extra</a><a href="coles.html">Nómadas</a><a href="toma-la-calle.html">Toma la calle</a>
+        </div></div>
+        <a href="celdas.html">Celdas</a>
         <div class="wp-toggle-group">
-        <a href="sobre-nosotros-2026.html" class="wp-cat">Sobre Coloniales</a>
-        <div class="wp-sub">
-            <a href="sobre-nosotros-2026.html">Sobre Coloniales</a>
-            <a href="sobre-nosotros-2026.html#alejandro">Sobre mí</a>
-        </div>
-        </div>
-        <div class="wp-toggle-group">
-        <a href="programas.html" class="wp-cat">Programas</a>
-        <div class="wp-sub">
-            <a href="campus-2026.html">Campus</a>
-            <a href="enfamilia-2026.html">En familia</a>
-            <a href="extra-2026.html">Extra</a>
-            <a href="coles-2026.html">Nómadas</a>
-            <a href="toma-la-calle-2026.html">Toma la calle</a>
-        </div>
-        </div>
-        <a href="campus-2026.html">Campus</a>
-        <a href="celdas3.html">Celdas</a>
-        <a href="#diario">Blog</a>
-        <div class="wp-toggle-group">
-        <a href="kit-logica-reciproca-2026.html" class="wp-cat">Kits constructivos</a>
+        <a href="kit-logica-reciproca.html" class="wp-cat">Kits constructivos</a>
         <div class="wp-sub">
             <a href="hexa.html">Hexa</a>
             <a href="domiko.html">Domiko</a>
@@ -115,65 +87,93 @@
       </nav>
     </div>
 
+    <!-- Producto -->
     <section class="col26-section">
-      <div class="col26-wrap col26-grid-50">
-        <div class="kit-content">
-          <span class="col26-num">KIT 04 /</span>
-          <h1 class="col26-title" style="color:var(--mag)">LEOPALOS</h1>
-          <div style="display:flex;align-items:center;gap:12px;margin:8px 0 16px">
-            <span style="font-size:1.6rem;font-weight:900;color:var(--mag)">Consultar</span>
-            <span style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);background:var(--col26-soft);padding:4px 10px;border-radius:20px">Bajo pedido</span>
-          </div>
-          <p style="font-size:1.05rem;line-height:1.8;color:var(--muted)">LeoPalos nos invita a descubrir los secretos de las estructuras de Leonardo Da Vinci, transportándonos hasta el Codex Atlanticus, donde el genio ideó las cúpulas autoportantes capaces de sostenerse sin tornillos ni adhesivos, solo por su peso y la gravedad.</p>
-          <a href="https://wa.me/34625039565?text=Me%20interesa%20el%20kit%20LEOPALOS" class="col26-btn col26-btn-primary">Consultar disponibilidad</a>
-        </div>
-        <div class="kit-photo">
-          <img src="https://tallerescoloniales.com/wp-content/uploads/2023/04/LEOPALOS-kit-construccion-logica-reciproca-talleres-coloniales.jpg" alt="Kit LEOPALOS de construcción">
-        </div>
-      </div>
-    </section>
-
-    <section class="col26-section col26-section-cream">
       <div class="col26-wrap">
-        <div class="col26-head col26-reveal"><span class="col26-num">Características /</span><h2 class="col26-title">Técnicas</h2></div>
-        <div class="col26-data-grid">
-          <div><b>Edad</b><span>+8 años</span></div>
-          <div><b>Construcción</b><span>Cúpulas autoportantes, puentes</span></div>
-          <div><b>Material</b><span>Madera de contrachapada</span></div>
-          <div><b>Piezas</b><span>50 o 250 uds (según kit)</span></div>
-        </div>
-        <div class="col26-data-grid" style="margin-top:2px">
-          <div><b>Montaje</b><span>Sencillo, sin adhesivos</span></div>
-          <div><b>Inspiración</b><span>Leonardo Da Vinci</span></div>
-          <div><b>Uso</b><span>Talleres, escuelas, hogar</span></div>
-          <div><b>Colección</b><span>Lógica Recíproca</span></div>
+        <div class="kit-product-layout">
+          <div class="kit-gallery col26-reveal">
+            <img src="https://tallerescoloniales.com/wp-content/uploads/2025/11/img_20220210_165948.webp" alt="Leopalos — cúpula autoportante de Leonardo Da Vinci">
+          </div>
+          <div class="col26-reveal">
+            <span class="col26-num">Kit 04 /</span>
+            <h2 class="col26-title" style="margin-top:8px;">Leopalos: la intuición <span>de Leonardo</span></h2>
+            <p class="col26-num" style="color:var(--mag);font-weight:900;font-size:1.4rem;">Consultar</p>
+            <p style="line-height:1.9;color:var(--muted)">LeoPalos nos invita a descubrir los secretos de las estructuras de <strong>Leonardo Da Vinci</strong>, transportándonos hasta el <strong>Codex Atlanticus</strong>, donde el genio ideó las <strong>cúpulas autoportantes</strong> capaces de sostenerse sin tornillos ni adhesivos, solo por su peso y la gravedad.</p>
+            <p style="line-height:1.9;color:var(--muted)">Con estos palos se construyen <strong>cúpulas, puentes y cubiertas recíprocas</strong> donde cada pieza sostiene a la siguiente, formando un entramado que distribuye el peso de forma natural. Una lección de física que se aprende con las manos.</p>
+            <p style="line-height:1.9;color:var(--muted)">Disponible en dos tamaños —<strong>50 o 250 piezas</strong>— para adaptarse a talleres, escuelas y hogar. Un kit artesanal de madera de contrachapado, inspirado en la colección Lógica Recíproca.</p>
+            <div class="kit-actions">
+              <a class="col26-btn col26-btn-primary" href="https://wa.me/34625039565?text=Me%20interesa%20el%20kit%20LEOPALOS" target="_blank" rel="noopener noreferrer">Consultar disponibilidad</a>
+              <a class="col26-btn col26-btn-outline" href="https://wa.me/34625039565" target="_blank" rel="noopener noreferrer">Pedir información</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Características técnicas -->
     <section class="col26-section col26-section-dark">
       <div class="col26-wrap">
-        <div class="col26-head col26-reveal"><span class="col26-num">Beneficios /</span><h2 class="col26-title">Educativos</h2></div>
+        <div class="col26-head col26-reveal"><span class="col26-num">Características /</span><h2 class="col26-title">Técnicas</h2></div>
+        <div class="col26-panel col26-panel-dark col26-reveal">
+          <ul class="check-list">
+            <li><strong>Edad recomendada:</strong> +8 años.</li>
+            <li><strong>Tipo de construcción:</strong> cúpulas autoportantes, puentes, cubiertas y estructuras recíprocas.</li>
+            <li><strong>Material:</strong> madera de contrachapado.</li>
+            <li><strong>Piezas:</strong> 50 o 250 uds (según kit).</li>
+            <li><strong>Montaje:</strong> sencillo, sin tornillos ni adhesivos.</li>
+            <li><strong>Inspiración:</strong> Leonardo Da Vinci, Codex Atlanticus.</li>
+          </ul>
+        </div>
+        <h3 style="margin:28px 0 10px;font-size:1.1rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em;">Beneficios educativos</h3>
+        <ul class="check-list">
+          <li><strong>Geometría aplicada:</strong> proporciones, simetría, teselaciones y estructuras concéntricas jugando.</li>
+          <li><strong>Pensamiento crítico:</strong> planificar, experimentar y construir en equipo desarrolla la resolución de problemas.</li>
+          <li><strong>Cooperación:</strong> fomenta la comunicación, el trabajo conjunto y la toma de decisiones compartida.</li>
+          <li><strong>Conexión histórica:</strong> conocer y jugar con los inventos de Leonardo une ciencia, arte e historia.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Cómo usarlo -->
+    <section class="col26-section">
+      <div class="col26-wrap">
+        <div class="col26-head col26-reveal"><span class="col26-num">Etapas de juego /</span><h2 class="col26-title">Cómo Usarlo</h2></div>
+        <p class="col26-lead col26-reveal">Un sistema de palos recíprocos que se sostiene solo. Empezando por puentes pequeños, los niños avanzan hasta cúpulas que pueden habitar, descubriendo entramado, tensión y equilibrio.</p>
         <div class="col26-grid-2">
-          <div class="col26-panel col26-panel-dark"><h3>📐 Geometría aplicada</h3><p>Aprender proporciones, simetría, teselaciones y estructuras concéntricas jugando.</p></div>
-          <div class="col26-panel col26-panel-dark"><h3>🧠 Pensamiento crítico</h3><p>Planificar, experimentar y construir en equipo desarrolla la resolución de problemas.</p></div>
-          <div class="col26-panel col26-panel-dark"><h3>🤝 Cooperación</h3><p>Fomenta la comunicación, el trabajo conjunto y la toma de decisiones compartida.</p></div>
-          <div class="col26-panel col26-panel-dark"><h3>📜 Conexión histórica</h3><p>Conocer y jugar con los inventos de Leonardo Da Vinci conecta ciencia, arte e historia.</p></div>
+          <div class="col26-panel col26-reveal" style="border-left:3px solid var(--mag)">
+            <h3>Primeros pasos — el puente</h3>
+            <p>Con pocas piezas se construye el clásico <strong>puente de Leonardo</strong>: los palos se entrelazan y sostienen entre sí. Es el primer contacto con la estructura recíproca y su sorprendente estabilidad.</p>
+          </div>
+          <div class="col26-panel col26-reveal" style="border-left:3px solid var(--mag)">
+            <h3>Cúpulas y bóvedas</h3>
+            <p>Al ampliar el número de piezas, se forman <strong>cúpulas autoportantes</strong> y bóvedas que pueden cubrir espacios y cobijar construcciones más grandes, entendiendo la distribución del peso en el aire.</p>
+          </div>
+          <div class="col26-panel col26-reveal" style="border-left:3px solid var(--mag)">
+            <h3>Estructuras a escala habitable</h3>
+            <p>Con el kit grande, la cúpula gana tamaño hasta permitir <strong>entrar dentro</strong>: un refugio recíproco donde la geometría de Leonardo se convierte en espacio vivido.</p>
+          </div>
+          <div class="col26-panel col26-reveal" style="border-left:3px solid var(--mag)">
+            <h3>Exploración libre</h3>
+            <p>Más allá de las propuestas, cada montaje libera la imaginación: torres, laberintos, esculturas. La estructura recíproca se convierte en un lenguaje propio para inventar.</p>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Preguntas -->
     <section class="col26-section col26-section-dark" id="faq">
       <div class="col26-wrap">
-        <div class="col26-head col26-reveal"><span class="col26-num">FAQ /</span><h2 class="col26-title">¿?</h2></div>
+        <div class="col26-head col26-reveal"><span class="col26-num">Preguntas /</span><h2 class="col26-title">Cómo activo mi kit <span>Leopalos</span></h2></div>
         <div class="col26-faq col26-reveal">
           <details class="col26-faq-item"><summary>¿Qué se puede construir?</summary><p>Cúpulas autoportantes, puentes, cubiertas y estructuras recíprocas. Todo sin tornillos ni adhesivos.</p></details>
           <details class="col26-faq-item"><summary>¿Hay diferentes tamaños de kit?</summary><p>Sí, disponible en versión de 50 o 250 piezas según el nivel de complejidad deseado.</p></details>
           <details class="col26-faq-item"><summary>¿Es apto para escuelas?</summary><p>Sí, está diseñado para talleres, escuelas y juego en familia. Fomenta la cooperación y el aprendizaje activo.</p></details>
+          <details class="col26-faq-item"><summary>¿Cómo se compra o encarga?</summary><p>Los kits se producen de forma artesanal en el taller de Coloniales. Escríbenos por WhatsApp para informarte de disponibilidad y precios.</p></details>
         </div>
       </div>
     </section>
 
+    <!-- CTA -->
     <section class="col26-section" id="contacto">
       <div class="col26-wrap">
         <div class="col26-cta col26-reveal">
@@ -189,8 +189,5 @@
 
   </div>
   <script src="./col26-system.js"></script>
-
-
-
 </body>
 </html>

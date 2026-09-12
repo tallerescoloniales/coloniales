@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celdas | Talleres de arquitectura, ciencia y arte</title>
+  <meta name="description" content="Explora nuestras Celdas: talleres transversales de arquitectura, ciencia, tecnología, arte y juego. Proyectos prácticos para colegios, campus y familias.">
+  <link rel="canonical" href="https://tallerescoloniales.com/celdas/">
+  <meta property="og:description" content="Descubre las 22 Celdas: propuestas prácticas de arquitectura, ciencia, arte y juego para colegios, campus y familias. Proyectos, materiales y aprendizaje activo.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./col26-system.css">
+  <style>
+    /* ── Sticky header de búsqueda ── */
+    .cat-header {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      padding: 20px 0 16px;
+      position: sticky;
+      top: 28px; /* Se apila debajo del topbar ultra-fino */
+      z-index: 80;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .cat-header-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .cat-header-top { display:flex; align-items:baseline; gap:12px; margin-bottom:14px; }
+    .cat-title { font-size:clamp(1rem,2.5vw,1.4rem); font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
+    .cat-title span { color:var(--mag); }
+    .cat-count { font-size:.6rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:#bbb; }
+    .cat-controls { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .cat-search-wrap { position:relative; flex:1; min-width:200px; }
+    .cat-search-wrap svg { position:absolute; left:11px; top:50%; transform:translateY(-50%); color:#bbb; width:15px; height:15px; pointer-events:none; }
+    .cat-search-wrap input { width:100%; padding:9px 14px 9px 36px; border:1.5px solid #e5e5e5; border-radius:8px; font-family:inherit; font-size:.82rem; outline:none; transition:border-color .2s; }
+    .cat-search-wrap input:focus { border-color:var(--mag); }
+    .cat-filters { display:flex; gap:6px; flex-wrap:wrap; }
+    .cat-fbtn { font-family:inherit; font-size:.58rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; padding:6px 12px; border-radius:6px; border:1.5px solid #ddd; background:#fff; cursor:pointer; transition:all .2s; color:#777; }
+    .cat-fbtn:hover, .cat-fbtn.on { background:var(--mag); border-color:var(--mag); color:#fff; }
+    /* ── Grid de celdas ── */
+    .cat-grid { max-width:1100px; margin:32px auto 80px; padding:0 24px; display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:16px; }
+    .celda-card { background:#fff; border-radius:10px; box-shadow:0 2px 16px rgba(0,0,0,.07); border-top:4px solid var(--cc); overflow:hidden; display:flex; flex-direction:column; transition:box-shadow .2s, transform .2s; cursor:pointer; }
+    .celda-card:hover { box-shadow:0 8px 32px rgba(0,0,0,.13); transform:translateY(-3px); }
+    .celda-card-head { padding:16px 18px 12px; display:flex; align-items:flex-start; gap:12px; }
+    .celda-num-badge { font-size:.55rem; font-weight:900; letter-spacing:.12em; color:#fff; background:var(--cc); border-radius:5px; padding:3px 8px; flex-shrink:0; margin-top:2px; }
+    .celda-card-info { flex:1; min-width:0; }
+    .celda-nombre { font-size:.93rem; font-weight:900; letter-spacing:.07em; text-transform:uppercase; color:#111; line-height:1.2; margin-bottom:4px; }
+    .celda-gancho { font-size:.68rem; font-style:italic; font-weight:600; color:var(--cc); }
+    .celda-card-desc { padding:0 18px 14px; font-size:.76rem; color:#666; line-height:1.75; border-bottom:1px solid #f0f0f0; }
+    .celda-card-tags { padding:12px 18px; display:flex; gap:7px; flex-wrap:wrap; }
+    .c-tag { font-size:.52rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:3px 7px; border-radius:4px; background:#f5f5f5; color:#666; }
+    .c-tag.cat { color:var(--cc); }
+    .celda-card-foot { padding:10px 18px 14px; display:flex; gap:8px; align-items:center; margin-top:auto; }
+    .c-badge { font-size:.57rem; font-weight:700; color:#aaa; }
+    /* ── Modal ── */
+    .cat-modal-bg { position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:300; display:none; align-items:center; justify-content:center; padding:20px; backdrop-filter:blur(5px); }
+    .cat-modal-bg.open { display:flex; }
+    .cat-modal { background:#fff; border-radius:14px; max-width:680px; width:100%; max-height:90vh; overflow-y:auto; animation:mslide .25s ease; }
+    @keyframes mslide { from{opacity:0;transform:scale(.95)} to{opacity:1;transform:scale(1)} }
+    .cat-modal-close { position:sticky; top:0; float:right; background:#fff; border:none; font-size:1.4rem; cursor:pointer; color:#aaa; padding:14px 18px; z-index:1; }
+    .cat-modal-close:hover { color:var(--mag); }
+    .cat-modal-body { padding:4px 28px 28px; }
+    .cat-modal-num { font-size:.55rem; font-weight:900; letter-spacing:.15em; color:#fff; background:var(--cc); border-radius:5px; padding:3px 8px; display:inline-block; margin-bottom:10px; }
+    .cat-modal-nombre { font-size:1.35rem; font-weight:900; letter-spacing:.08em; text-transform:uppercase; margin-bottom:4px; }
+    .cat-modal-gancho { font-size:.84rem; font-style:italic; font-weight:600; color:var(--cc); margin-bottom:18px; }
+    .cat-modal-section { margin-bottom:18px; }
+    .cat-modal-section h4 { font-size:.58rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--cc); margin-bottom:8px; }
+    .cat-modal-section p, .cat-modal-section ul { font-size:.82rem; color:#555; line-height:1.8; }
+    .cat-modal-section ul { padding-left:18px; }
+    .cat-modal-tags { display:flex; gap:6px; flex-wrap:wrap; }
+    .res-badge { font-size:.6rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:4px 10px; border-radius:5px; background:#f5f5f5; color:#555; margin:2px; }
+    /* ── No results ── */
+    .cat-no-results { text-align:center; padding:60px 20px; color:#ccc; font-size:.82rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; display:none; }
+    .cat-no-results.show { display:block; }
+    /* ── Leyenda de áreas ── */
+    .cat-legend { display:flex; gap:14px; flex-wrap:wrap; align-items:center; font-size:.68rem; color:#666; margin-bottom:14px; }
+    .cat-legend-label { font-weight:800; color:var(--dark); letter-spacing:.1em; text-transform:uppercase; }
+    .cat-legend-item { display:flex; align-items:center; gap:6px; }
+    .cat-legend-dot { width:12px; height:12px; border-radius:99px; display:inline-block; }
+    /* ── Chips de área del nuevo catálogo ── */
+    .area-chip { font-size:.55rem; font-weight:700; padding:4px 9px; border-radius:99px; color:#fff; }
+    /* ── Modal: short, quote, pie ── */
+    .cat-modal-short { padding:12px 16px; border:1.5px solid var(--cc); border-left-width:5px; background:#fdf3f9; border-radius:8px; font-size:.82rem; color:#555; line-height:1.7; margin-bottom:18px; }
+    .cat-modal-quote { margin:0 0 18px; padding:12px 20px; background:#f5f5f5; border-left:5px solid var(--cc); font-weight:800; font-size:1rem; color:var(--dark); line-height:1.5; }
+    .cat-modal-areas { display:flex; gap:6px; flex-wrap:wrap; }
+    .cat-modal-pie { font-size:.7rem; color:#888; border-top:1px solid #eee; padding-top:14px; margin-top:6px; }
+    /* ── Chips de conexiones ── */
+    .link-chip { font-size:.58rem; font-weight:700; letter-spacing:.05em; padding:5px 10px; border-radius:6px; background:#fff; border:1.5px solid #ddd; color:#555; cursor:pointer; transition:all .2s; }
+    .link-chip:hover { background:var(--mag); border-color:var(--mag); color:#fff; }
+    @media(max-width:600px){ .cat-controls{flex-direction:column} .cat-grid{grid-template-columns:1fr} }
+  </style>
+</head>
+<body class="col26-body">
+  <div class="col26-page">
+
+    <!-- Menú Principal (igual en todas las páginas) -->
+    <header class="main-header">
+      <a class="logo" href="index.html">Colonial<em>es</em></a>
+      <nav class="main-nav">        <a href="index.html">Inicio</a>
+        <a href="sobre-nosotros.html">Sobre…</a>
+        <div class="nav-dropdown">
+          <span class="nav-dropdown-trigger">Programas</span>
+          <div class="nav-dropdown-content">
+
+            <a href="campus.html">Campus</a>
+            <a href="enfamilia.html">En familia</a>
+            <a href="extra.html">Extra</a>
+            <a href="coles.html">Nómadas</a>
+            <a href="toma-la-calle.html">Toma la calle</a>
+          </div>
+        </div>
+        <a href="celdas.html">Celdas</a>
+        <div class="nav-dropdown">
+          <a href="kit-logica-reciproca.html" class="nav-dropdown-trigger">Kits</a>
+          <div class="nav-dropdown-content">
+            <a href="hexa.html">Hexa</a>
+            <a href="domiko.html">Domiko</a>
+            <a href="duomo.html">Duomo</a>
+            <a href="leopalos.html">Leopalos</a>
+          </div>
+        </div>
+        <a href="#contacto">Contacto</a></nav>
+      <div style="display:flex;align-items:center;gap:6px">
+        <button class="main-hamburger" id="mainHamburger"><span></span> Menú</button>
+      </div>
+    </header>
+
+    <!-- Submenú de navegación interna -->
+    <header class="col26-topbar">
+      <div class="col26-wrap col26-topbar-inner">
+        <a class="col26-topbar-title" href="#">Celdas</a>
+        <div class="col26-nav-scroll-wrapper">
+          <nav class="col26-nav">
+            <a href="#areas">Qué son</a>
+            <a href="#areas">Áreas</a>
+            <a href="#catalogo">Buscador</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Overlay menú móvil -->
+    <div class="wp-overlay" id="wpOverlay">
+      <button class="wp-overlay-close" id="wpCloseBtn">✕ Cerrar</button>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="sobre-nosotros.html">Sobre…</a>
+        <div class="wp-toggle-group">
+        <span class="wp-cat">Programas</span>
+        <div class="wp-sub">
+
+            <a href="campus.html">Campus</a>
+            <a href="enfamilia.html">En familia</a>
+            <a href="extra.html">Extra</a>
+            <a href="coles.html">Nómadas</a>
+            <a href="toma-la-calle.html">Toma la calle</a>
+        </div>
+        </div>
+        <a href="celdas.html">Celdas</a>
+        <div class="wp-toggle-group">
+        <a href="kit-logica-reciproca.html" class="wp-cat">Kits constructivos</a>
+        <div class="wp-sub">
+            <a href="hexa.html">Hexa</a>
+            <a href="domiko.html">Domiko</a>
+            <a href="duomo.html">Duomo</a>
+            <a href="leopalos.html">Leopalos</a>
+        </div>
+        </div>
+        <a href="#contacto">Contacto</a>
+        <div class="wp-overlay-social">
+          <a href="https://wa.me/34625039565" target="_blank">WhatsApp</a>
+          <a href="https://instagram.com/tallerescoloniales" target="_blank">Instagram</a>
+          <a href="https://facebook.com/tallerescoloniales" target="_blank">Facebook</a>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Hero -->
+    <section class="col26-hero" style="padding-top:56px;">
+      <div class="col26-wrap col26-hero-grid">
+        <div class="col26-hero-copy col26-reveal">
+          <p class="col26-kicker">20 propuestas · construcción · ciencia · arte · tecnología · expresión</p>
+          <h1>Catálogo de <span>Celdas</span></h1>
+          <p>Las Celdas son la biblioteca viva de Coloniales: talleres preparados con materiales, conceptos clave y recursos de facilitación, pero abiertos en su ejecución para que cada grupo investigue a su manera. Sirven para campus, colegios, AMPAs, extraescolares, espacios familiares y proyectos a medida.</p>
+        </div>
+        <div class="col26-photo-stack col26-reveal" data-parallax-stack>
+          <div class="col26-photo-card col26-photo-a"><img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/4-nodo-Pequeno.jpg" alt="Lógica Recíproca"></div>
+          <div class="col26-photo-card col26-photo-b"><img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/2-particulas-Pequeno.jpg" alt="Partículas"></div>
+          <div class="col26-photo-card col26-photo-c"><img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/8-campo-Pequeno-rotated.jpg" alt="Campo"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Áreas de Trabajo -->
+    <section class="col26-section" id="areas" style="background: #fff; padding-bottom: 20px;">
+      <div class="col26-wrap">
+        <div class="col26-head col26-reveal">
+          <span class="col26-num">01 /</span><h2 class="col26-title">Áreas que <span>Trabajamos</span></h2>
+        </div>
+        <div class="col26-grid-2" style="gap: 40px; margin-top: 40px;">
+          <div class="col26-panel col26-reveal">
+            <h3 style="color: var(--dark); font-size: 1.3rem; font-weight: 800; margin-bottom: 12px;">📐 DISEÑO Y ARQUITECTURA</h3>
+            <p style="font-size: 0.95rem; line-height: 1.8; color: #555;">La construcción a través del juego estimula el aprendizaje transversal. Introducimos conceptos espaciales y afianzamos contenidos educativos adaptados a cada desarrollo. <strong>Generamos espacios donde aprender mejor.</strong></p>
+          </div>
+          <div class="col26-panel col26-reveal">
+            <h3 style="color: var(--dark); font-size: 1.3rem; font-weight: 800; margin-bottom: 12px;">⚙️ INGENIERÍA Y CONSTRUCCIÓN</h3>
+            <p style="font-size: 0.95rem; line-height: 1.8; color: #555;">Con poleas, engranajes e hidráulica, diseñamos máquinas, móviles y autómatas para desarrollar conceptos de física y mecánica de manera intuitiva y manipulativa. <strong>¡Crearemos objetos que nos inspiren!</strong></p>
+          </div>
+          <div class="col26-panel col26-reveal">
+            <h3 style="color: var(--dark); font-size: 1.3rem; font-weight: 800; margin-bottom: 12px;">💻 TECNOLOGÍA Y RECICLAJE</h3>
+            <p style="font-size: 0.95rem; line-height: 1.8; color: #555;">Desmontamos aparatos para explorar su funcionamiento y reinventar sus piezas. Fomentamos la reparación, la reutilización y el inicio a la programación. <strong>Nos adentramos en el futuro desde lo analógico.</strong></p>
+          </div>
+          <div class="col26-panel col26-reveal">
+            <h3 style="color: var(--dark); font-size: 1.3rem; font-weight: 800; margin-bottom: 12px;">🎨 EXPRESIÓN Y AUDIOVISUAL</h3>
+            <p style="font-size: 0.95rem; line-height: 1.8; color: #555;">Historias, espacios y mundos desde el cómic a la edición digital o ritmos corporativos. Un lugar de expresión libre en lo plástico, el movimiento y el pensamiento propio. <strong>El mundo empieza imaginándolo.</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sticky search bar -->
+    <div class="cat-header" id="catalogo">
+      <div class="cat-header-inner">
+        <div class="cat-header-top">
+          <span class="cat-title">Celdas de <span>Aprendizaje</span></span>
+          <span class="cat-count" id="countLabel">20 celdas</span>
+        </div>
+        <div class="cat-legend">
+          <span class="cat-legend-label">Áreas:</span>
+          <span class="cat-legend-item"><span class="cat-legend-dot" style="background:#7b5fd0"></span>Diseño y Arquitectura</span>
+          <span class="cat-legend-item"><span class="cat-legend-dot" style="background:#e07b3a"></span>Ingeniería y Construcción</span>
+          <span class="cat-legend-item"><span class="cat-legend-dot" style="background:#4aaa5e"></span>Tecnología y Reciclaje</span>
+          <span class="cat-legend-item"><span class="cat-legend-dot" style="background:#d81b60"></span>Expresión y Audiovisual</span>
+        </div>
+        <div class="cat-controls">
+          <div class="cat-search-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="searchInput" placeholder="Buscar celda, concepto, material…">
+          </div>
+          <div class="cat-filters">
+            <button class="cat-fbtn on" data-cat="all">Todas</button>
+            <button class="cat-fbtn" data-cat="diseno">Diseño y Arquitectura</button>
+            <button class="cat-fbtn" data-cat="ingenieria">Ingeniería y Construcción</button>
+            <button class="cat-fbtn" data-cat="tecnologia">Tecnología y Reciclaje</button>
+            <button class="cat-fbtn" data-cat="expresion">Expresión y Audiovisual</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid generado por JS -->
+    <div class="cat-grid" id="catGrid"></div>
+    <p class="cat-no-results" id="noResults">No se encontraron celdas</p>
+
+  </div><!-- /col26-page -->
+
+  <!-- Modal -->
+  <div class="cat-modal-bg" id="modalBg">
+    <div class="cat-modal">
+      <button class="cat-modal-close" id="modalClose">×</button>
+      <div class="cat-modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <section class="col26-section" id="contacto">
+    <div class="col26-wrap">
+      <div class="col26-cta col26-reveal">
+        <h2 class="col26-title">¿Qué Celda Quieres Activar?</h2>
+        <p>Ya sea para un taller puntual, un campus de verano, una extraescolar o un proyecto a medida en tu centro, hay una celda Colonial esperándote. Cuéntanos qué necesitas y te ayudamos a darle forma.</p>
+        <div class="col26-actions">
+          <a class="col26-btn col26-btn-primary" href="https://wa.me/34625039565" target="_blank" rel="noopener noreferrer">WhatsApp · 625 039 565</a>
+          <a class="col26-btn col26-btn-outline" href="mailto:hola@tallerescoloniales.com">hola@tallerescoloniales.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <script src="./col26-system.js"></script>
+  <script>
+  var AREA_COLORS={
+    "Diseño y Arquitectura":"#7b5fd0",
+    "Ingeniería y Construcción":"#e07b3a",
+    "Tecnología y Reciclaje":"#4aaa5e",
+    "Expresión y Audiovisual":"#d81b60"
+  };
+  var AREA_KEY={
+    "diseno":"Diseño y Arquitectura",
+    "ingenieria":"Ingeniería y Construcción",
+    "tecnologia":"Tecnología y Reciclaje",
+    "expresion":"Expresión y Audiovisual"
+  };
+  var CELDAS=[
+    {num:"01",nombre:"Lógica Recíproca",gancho:"Cuando pocos hacen un mucho",color:"#e07b3a",
+     short:"Explorar cómo las partes pueden necesitarse unas a otras para construir estructuras, objetos y espacios que adquieren sentido como conjunto.",
+     explore:"Una celda de construcción colectiva basada en la reciprocidad. Cada pieza, persona o decisión puede modificar el resultado de las demás, de modo que construir se convierte también en una forma de colaborar, negociar y descubrir soluciones juntos.",
+     do:["estructuras","piezas modulares","construcciones colectivas","equilibrio","cooperación","instalaciones"],
+     areas:["Diseño y Arquitectura","Ingeniería y Construcción"],
+     links:["Procesos Edificantes","Modos de Habitar","Canica Dinámica","Cartón, Cartón, Cartón"],
+     example:"Una estructura empieza con unas pocas piezas y crece a medida que cada participante descubre cómo apoyarse en lo que ya han construido los demás.",
+     question:"¿Qué podemos construir juntos que no podríamos construir por separado?",
+     why:"Porque construir con otros obliga a observar, adaptar y encontrar el lugar que cada parte puede ocupar dentro de un conjunto.",
+     edades:"6-16",duracion:"2-4h"},
+    {num:"02",nombre:"Ingeniería Inversa",gancho:"Desmonta para entender",color:"#4a78c8",
+     short:"Abrir, desmontar y analizar objetos y dispositivos para descubrir cómo están hechos, cómo funcionan y qué nuevas posibilidades esconden.",
+     explore:"Investigamos las cosas desde dentro. Aparatos, mecanismos y objetos cotidianos se convierten en sistemas que podemos observar, desmontar, clasificar, modificar, reparar o reutilizar. El proceso permite acercarse a la tecnología sin tratarla como una caja negra.",
+     do:["desmontaje","mecanismos","circuitos","reparación","reutilización","electrónica","análisis de objetos"],
+     areas:["Tecnología y Reciclaje","Ingeniería y Construcción"],
+     links:["Robótica Analógica","Canica Dinámica","Antropoceno","Dar la Lata","Lúdica Lúcida"],
+     example:"Un viejo aparato electrónico se desmonta para identificar sus componentes; después una pieza puede convertirse en parte de una escultura, un circuito o una nueva máquina.",
+     question:"¿Qué hay dentro y qué hace que esto funcione?",
+     why:"Porque desmontar una cosa es otra manera de leerla.",
+     edades:"8-16",duracion:"2-3h"},
+    {num:"03",nombre:"Canica Dinámica",gancho:"Haz que ruede",color:"#d4663a",
+     short:"Investigar movimiento, fuerzas, energía y relaciones causa-efecto haciendo que las cosas se muevan y observando qué sucede.",
+     explore:"La canica es una metáfora del movimiento. Agua, aire, ruedas, poleas, objetos que caen, mecanismos o grandes circuitos pueden convertirse en una investigación sobre cómo se transmite el movimiento y cómo una acción provoca otra.",
+     do:["circuitos","rampas","agua","aire","ruedas","poleas","fuerzas","energía","cadenas de acontecimientos","instalaciones"],
+     areas:["Ingeniería y Construcción","Tecnología y Reciclaje"],
+     links:["Robótica Analógica","Haz que Suene","Ingeniería Inversa","Cartón, Cartón, Cartón","Lúdica Lúcida"],
+     example:"Un circuito de cartón comienza con una rampa. Al modificar pendientes y recorridos aparecen nuevas trayectorias, obstáculos y reacciones.",
+     question:"¿Qué ocurre cuando algo se mueve?",
+     why:"Porque seguir un movimiento permite descubrir relaciones que no se ven cuando todo permanece quieto.",
+     edades:"5-14",duracion:"2-4h"},
+    {num:"04",nombre:"Robótica Analógica",gancho:"Mueve sin motor",color:"#3aaba0",
+     short:"Explorar mecanismos y movimientos para conseguir que algo haga algo de manera intencionada, sin depender de sistemas digitales.",
+     explore:"Engranajes, poleas, palancas, ruedas, levas, hilos, articulaciones y otros mecanismos permiten construir máquinas que responden, se mueven o producen efectos. Lo importante no es fabricar un robot convencional, sino comprender cómo el movimiento puede generar comportamiento.",
+     do:["engranajes","poleas","levas","palancas","autómatas","marionetas","mecanismos","articulaciones","máquinas"],
+     areas:["Ingeniería y Construcción","Tecnología y Reciclaje"],
+     links:["Canica Dinámica","Ingeniería Inversa","¡Vaya Telar!","Haz que Suene","Lúdica Lúcida"],
+     example:"Una marioneta se mueve mediante hilos y una instalación de sombras convierte el mecanismo en parte de una escena.",
+     question:"¿Qué puedo conseguir haciendo que algo se mueva?",
+     why:"Porque una máquina puede empezar siendo simplemente una idea de movimiento y acabar adquiriendo un comportamiento.",
+     edades:"8-16",duracion:"2-4h"},
+    {num:"05",nombre:"Modos de Habitar",gancho:"Adaptar para vivir",color:"#8b5fc8",
+     short:"Investigar cómo las personas adaptamos espacios, materiales, costumbres y objetos para vivir en equilibrio con nuestro entorno y con los demás.",
+     explore:"Habitar no es solamente construir una casa. Es adaptar respetuosamente un entorno a nuestras necesidades, costumbres y formas de vida, y hacerlo mutable cuando esas necesidades cambian. Podemos mirar cómo habitan distintas culturas, cómo habitamos nosotros y cómo imaginamos aquello que queremos dejar habitable.",
+     do:["viviendas","culturas","costumbres","espacios personales","rituales","formas de vida","juegos tradicionales","identidad"],
+     areas:["Diseño y Arquitectura","Expresión y Audiovisual"],
+     links:["Todo en Regla","Procesos Edificantes","Toma la Calle","Esta es otra Historia","Moda Tinker"],
+     example:"Investigar cómo viven y juegan niños de otro lugar puede terminar convirtiéndose en una pequeña arquitectura que recrea una forma de habitar.",
+     question:"¿Cómo habito, cómo quiero habitar y qué quiero dejar habitable?",
+     why:"Porque la manera en que organizamos nuestro entorno cuenta mucho sobre cómo vivimos.",
+     edades:"5-16",duracion:"3-6h"},
+    {num:"06",nombre:"Toma la Calle",gancho:"La calle es territorio de juego",color:"#c8d44a",
+     short:"Explorar el espacio público como territorio de juego, autonomía, descubrimiento y aprendizaje desde la mirada de la infancia.",
+     explore:"Nace de recuperar una forma de aprender fuera de los límites del aula: recorrer, apropiarse, observar, construir, inventar juegos y descubrir el entorno. La calle, el barrio, el parque o una plaza pueden convertirse en escenarios de exploración y aprendizaje.",
+     do:["juego libre","espacio público","recorridos","apropiación","juegos tradicionales","observación","barrio","naturaleza urbana"],
+     areas:["Diseño y Arquitectura","Expresión y Audiovisual"],
+     links:["Modos de Habitar","Lógica Recíproca","Esta es otra Historia","Autonomía"],
+     example:"Un espacio cotidiano se transforma mediante juegos, construcciones efímeras y recorridos inventados por los propios niños.",
+     question:"¿Qué posibilidades tiene este lugar si lo miramos con ojos de niño?",
+     why:"Porque muchas veces el aprendizaje aparece cuando dejamos de mirar un lugar solo para aquello para lo que fue diseñado.",
+     note:"Autonomía queda fuera del núcleo actual de 20 celdas y se reserva como posible desarrollo del área Exploradores.",
+     edades:"4-12",duracion:"1-3h"},
+    {num:"07",nombre:"¡Vaya Telar!",gancho:"Entretejer para descubrir",color:"#d81b60",
+     short:"Explorar hilos, nudos, tramas y formas de unión como materia para crear, estructurar, comunicar y experimentar.",
+     explore:"El hilo puede convertirse en una línea, un nudo, una trama, una red o una estructura. Trabajamos con lana, cuerda, cables, cintas, tejidos y materiales inesperados para descubrir qué sucede cuando los entrelazamos, tensamos o relacionamos.",
+     do:["telar","nudos","tramas","costura","redes","patrones","instalaciones","macramé","estructuras de hilo"],
+     areas:["Expresión y Audiovisual","Diseño y Arquitectura"],
+     links:["Moda Tinker","Robótica Analógica","Modos de Habitar","Todo en Regla","Lógica Recíproca"],
+     example:"Una colección de nudos y líneas puede terminar formando una red que funciona a la vez como dibujo, estructura o sistema de comunicación inventado.",
+     question:"¿Qué puede llegar a ser un hilo cuando deja de ser solo un hilo?",
+     why:"Porque una línea puede convertirse en relación, estructura y significado cuando se encuentra con otras.",
+     edades:"6-16",duracion:"2-4h"},
+    {num:"08",nombre:"Más Madera",gancho:"A golpe de mazo",color:"#b07848",
+     short:"Conocer la madera transformándola con las manos, las herramientas y la curiosidad por un material natural.",
+     explore:"La madera se investiga desde su comportamiento: cortar, golpear, lijar, unir, tallar y modificar para descubrir sus posibilidades. Es una aproximación práctica al oficio y a la transformación de un material que forma parte de innumerables objetos, construcciones y culturas.",
+     do:["talla","corte","lijado","uniones","herramientas","piezas","juguetes","construcción con madera"],
+     areas:["Ingeniería y Construcción","Diseño y Arquitectura"],
+     links:["Procesos Edificantes","Lógica Recíproca","Modos de Habitar","Todo en Regla"],
+     example:"Una pieza de madera comienza como material sin forma definida y, a través de herramientas y decisiones, se convierte en un objeto construido por el participante.",
+     question:"¿Qué me cuenta la madera cuando empiezo a trabajarla?",
+     why:"Porque conocer un material con las manos cambia la manera en que entendemos lo que puede llegar a ser.",
+     edades:"8-16",duracion:"3-6h"},
+    {num:"09",nombre:"Esta es otra Historia",gancho:"Construir mundos para contar",color:"#6b9db8",
+     short:"Crear historias y mundos simbólicos que se desarrollan al mismo tiempo que construimos físicamente los espacios donde ocurren.",
+     explore:"Los niños inventan personajes, conflictos, lugares y mundos posibles. La historia puede comenzar con una situación, una pregunta o un acontecimiento imaginario y crecer mediante las aportaciones del grupo. Mientras la narración avanza, el espacio se transforma para hacerla habitable.",
+     do:["relatos","personajes","alter egos","mundos imaginarios","juego de roles","escenografías","construcción","imágenes generadas con IA"],
+     areas:["Expresión y Audiovisual","Diseño y Arquitectura"],
+     links:["Va de Cine","Lúdica Lúcida","Moda Tinker","Modos de Habitar","Toma la Calle"],
+     example:"Una historia lleva al grupo hasta otro planeta y el espacio se convierte en una base donde aparecen objetos, personajes y arquitecturas pertenecientes al relato.",
+     question:"¿Qué mundo podemos construir para que esta historia pueda existir?",
+     why:"Porque cuando una historia se puede habitar, deja de estar solo en la imaginación.",
+     edades:"6-14",duracion:"2-5h"},
+    {num:"10",nombre:"Va de Cine",gancho:"Contar con imágenes en movimiento",color:"#6b9db8",
+     short:"Explorar cómo se construyen imágenes en movimiento y cómo pueden utilizarse para contar, documentar, transformar o comunicar una historia.",
+     explore:"Experimentamos con stop motion, timelapse, cortos, GIF, pixel art, grabación y edición. También investigamos los orígenes y mecanismos de lo audiovisual, desde juguetes ópticos hasta cámaras, encuadres, enfoques, planos y montaje.",
+     do:["stop motion","timelapse","cortometraje","GIF","pixel art","cámara","planos","montaje","edición","juguetes ópticos"],
+     areas:["Expresión y Audiovisual","Tecnología y Reciclaje"],
+     links:["Esta es otra Historia","Lúdica Lúcida","Ingeniería Inversa","Haz que Suene"],
+     example:"Una historia construida por el grupo se transforma en un pequeño relato audiovisual mediante fotografías, personajes, escenarios y edición.",
+     question:"¿Cómo podemos hacer que una imagen cobre movimiento y cuente algo?",
+     why:"Porque entre una imagen y otra también existe una historia.",
+     edades:"8-16",duracion:"2-6h"},
+    {num:"11",nombre:"Lúdica Lúcida",gancho:"Jugar con la luz para aprender a mirar",color:"#c8973a",
+     short:"Explorar luz, sombra, color y percepción para transformar espacios, crear imágenes y descubrir que podemos ver una misma realidad de muchas maneras.",
+     explore:"Trabajamos con proyectores, retroproyectores, diapositivas, transparencias, láseres, luz negra, luces intermitentes, materiales iridiscentes y fluorescentes, acetatos, reflejos, texturas luminosas, moiré y sombras RGB. La luz también se convierte en arquitectura: una pantalla, un teatro de sombras o una instalación pueden transformar por completo un espacio.",
+     do:["proyección","sombras","videomapping","retroproyección","color","reflejos","transparencias","luz negra","láser","moiré","teatro de sombras"],
+     areas:["Expresión y Audiovisual","Tecnología y Reciclaje","Diseño y Arquitectura"],
+     links:["Va de Cine","Ingeniería Inversa","Robótica Analógica","Haz que Suene","Esta es otra Historia"],
+     example:"Una gran tela blanca se convierte en pantalla y los niños, detrás de ella, construyen y mueven los elementos que generan un teatro de sombras gigante.",
+     question:"¿Qué cambia cuando cambiamos la forma de mirar?",
+     why:"Porque observar, documentar y volver a mirar abre posibilidades que no aparecen en una primera mirada.",
+     edades:"6-14",duracion:"1-3h"},
+    {num:"12",nombre:"Enlaces Covalentes",gancho:"Mezclar, combinar, crear juntos",color:"#4aaa5e",
+     short:"Explorar la química mediante mezclas, reacciones y transformaciones de materiales, mientras investigamos también la idea de unión y reciprocidad.",
+     explore:"Pócimas, pigmentos, cristales, masas, mezclas y experimentos permiten investigar qué sucede cuando diferentes sustancias se encuentran. El nombre abre además una segunda lectura: igual que los elementos se unen para formar algo nuevo, las personas pueden crear enlaces entre sí y producir algo que no existiría por separado.",
+     do:["mezclas","reacciones","pigmentos","cristales","masas","pócimas","transformaciones","experimentación"],
+     areas:["Tecnología y Reciclaje","Expresión y Audiovisual"],
+     links:["Antropoceno","Ingeniería Inversa","Estampados","Lógica Recíproca"],
+     example:"Una mezcla experimental produce un nuevo material o textura que después puede convertirse en pigmento, estampado o elemento de una instalación colectiva.",
+     question:"¿Qué aparece cuando dos cosas diferentes se encuentran?",
+     why:"Porque la transformación puede estar tanto en la materia como en las relaciones que establecemos.",
+     edades:"4-14",duracion:"1-3h"},
+    {num:"13",nombre:"Haz que Suene",gancho:"Explorar el sonido",color:"#d45b6e",
+     short:"Investigar qué es el sonido, cómo se produce y cómo podemos transformarlo haciendo sonar objetos, materiales y dispositivos.",
+     explore:"El sonido puede aparecer desde un objeto cotidiano, un instrumento construido con residuos, una vibración, un motor, una Makey Makey o una grabación. Exploramos también ondas, eco, vibración y las posibilidades de recoger, modificar y reproducir sonidos.",
+     do:["instrumentos","objetos sonoros","grabación","Makey Makey","ondas","eco","vibración","sonido digital","reciclaje"],
+     areas:["Expresión y Audiovisual","Tecnología y Reciclaje","Ingeniería y Construcción"],
+     links:["Canica Dinámica","Robótica Analógica","Ingeniería Inversa","Va de Cine","Lúdica Lúcida"],
+     example:"Un autómata mueve una pieza que activa un instrumento, mientras el movimiento de una instalación genera una secuencia sonora.",
+     question:"¿Qué tiene que pasar para que algo suene?",
+     why:"Porque cualquier objeto puede convertirse en una puerta para investigar un fenómeno invisible.",
+     edades:"4-14",duracion:"1-3h"},
+    {num:"14",nombre:"Cartón, Cartón, Cartón",gancho:"Un material, infinitas posibilidades",color:"#a8bc2a",
+     short:"Un espacio de exploración con cartón y papel como materiales principales, capaces de convertirse en estructuras, objetos, mecanismos, espacios o cualquier otra cosa.",
+     explore:"Cajas, planchas, tubos, recortes y papeles se pueden cortar, doblar, unir, transformar y combinar sin una técnica ni resultado obligatorio. Pop-up, origami, kirigami, autómatas de papel, maquetas y estructuras son algunas de las posibilidades.",
+     do:["cajas","maquetas","pop-up","origami","kirigami","autómatas","estructuras","mobiliario","papel","cartón"],
+     areas:["Diseño y Arquitectura","Ingeniería y Construcción","Expresión y Audiovisual"],
+     links:["Canica Dinámica","Todo en Regla","Moda Tinker","Procesos Edificantes","Lógica Recíproca"],
+     example:"El mismo cartón puede convertirse en una rampa para canicas, un vestido, una maqueta arquitectónica o un mecanismo de papel dependiendo de la pregunta que se esté explorando.",
+     question:"¿Qué puede llegar a ser el cartón?",
+     why:"Porque un material cotidiano puede convertirse en casi cualquier cosa cuando dejamos abierta su interpretación.",
+     edades:"5-14",duracion:"2-6h"},
+    {num:"15",nombre:"Antropoceno",gancho:"La humanidad y el uso de los materiales",color:"#1aaa90",
+     short:"Explorar cómo las personas hemos utilizado, transformado y combinado los materiales para construir nuestro mundo y modificar nuestro entorno.",
+     explore:"Miramos los materiales no solo por lo que podemos hacer con ellos, sino por la historia de nuestra relación con ellos: cómo se obtenían, trabajaban y utilizaban en diferentes épocas y culturas, y qué huella dejan hoy. El plástico es un campo especialmente fértil, pero la exploración puede abrirse a cerámicas, residuos, materiales naturales o tecnologías.",
+     do:["plásticos","cerámicas","residuos","materiales naturales","transformación","historia material","cultura","huella humana"],
+     areas:["Tecnología y Reciclaje","Diseño y Arquitectura"],
+     links:["Dar la Lata","Cartón, Cartón, Cartón","Procesos Edificantes","Modos de Habitar","Ingeniería Inversa"],
+     example:"Investigar cómo se trabajaba una cerámica en la Antigua Grecia puede llevar a experimentar con moldes, formas y materiales y después conectar con Modos de Habitar o Procesos Edificantes.",
+     question:"¿Qué hemos hecho los humanos con los materiales y qué han hecho ellos con nuestro mundo?",
+     why:"Porque la historia de la humanidad también puede leerse a través de los materiales que hemos elegido y transformado.",
+     edades:"8-16",duracion:"2-4h"},
+    {num:"16",nombre:"Todo en Regla",gancho:"Diseñar y organizar el espacio",color:"#6b9db8",
+     short:"Explorar medida, escala, proporción, geometría y representación para proyectar espacios, interiores y objetos.",
+     explore:"Es la parte más proyectual de la construcción: imaginar, medir, dibujar, representar, planificar y comprobar. Podemos trabajar con planos y maquetas, herramientas digitales o construcciones a escala real, llegando también al diseño del mobiliario y al mantenimiento y adaptación del espacio.",
+     do:["planos","escalas","medidas","proporción","geometría","interiorismo","maquetas","mobiliario","Homestyler","Los Sims","mantenimiento"],
+     areas:["Diseño y Arquitectura","Ingeniería y Construcción"],
+     links:["Procesos Edificantes","Modos de Habitar","Cartón, Cartón, Cartón","Lógica Recíproca"],
+     example:"Dentro de la Torre de Pronillo se proyecta una vivienda a tamaño real, se construyen sus límites y después se diseña y fabrica el mobiliario.",
+     question:"¿Cómo podemos imaginar, representar y organizar un espacio antes de construirlo?",
+     why:"Porque diseñar también es una forma de construir: primero construimos posibilidades en nuestra cabeza.",
+     edades:"8-16",duracion:"2-4h"},
+    {num:"17",nombre:"Moda Tinker",gancho:"Arquitectura para llevar puesta",color:"#d81b60",
+     short:"Explorar cuerpo, identidad y transformación mediante el tinkering con ropa, tejidos y materiales recuperados, sin necesidad de crear una prenda convencional.",
+     explore:"Cortar, coser, pintar, unir, tensar y combinar materiales del taller para convertirlos en ropa, complementos, patrones, objetos, personajes o incluso pequeñas arquitecturas corporales y espaciales. El material puede ser tela, plástico, papel, cartón, cinta VHS o cualquier recurso que permita cacharrear.",
+     do:["costura básica","ropa recuperada","patrones","disfraces","accesorios","plásticos","papel","cinta VHS","personajes","pasarelas","escenografía"],
+     areas:["Expresión y Audiovisual","Diseño y Arquitectura","Tecnología y Reciclaje"],
+     links:["¡Vaya Telar!","Modos de Habitar","Esta es otra Historia","Cartón, Cartón, Cartón"],
+     example:"Un plástico de pintor se transforma en un vestido, mientras la cinta VHS se tensa y combina con otros materiales para crear una pieza que puede ser llevada, expuesta o formar parte de una escena.",
+     question:"¿En qué puedo convertir estos materiales para transformar un cuerpo, un personaje o un espacio?",
+     why:"Porque tinkering también puede ser explorar cómo nos presentamos, nos transformamos y habitamos un cuerpo o una escena.",
+     edades:"8-16",duracion:"3-6h"},
+    {num:"18",nombre:"Dar la Lata",gancho:"Explorar y transformar el metal",color:"#e07b3a",
+     short:"Investigar las posibilidades de los metales recuperados mediante su manipulación directa, sin necesidad de perseguir un objeto final.",
+     explore:"Latas, chapas, alambres, cobre y otros metales se convierten en materia de experimentación. Cortar, doblar, perforar, golpear, enrollar, tensar o unir permite conocer el comportamiento del material y descubrir qué puede llegar a ser.",
+     do:["chapas","latas","alambre","cobre","cortar","doblar","perforar","golpear","enrollar","unir"],
+     areas:["Tecnología y Reciclaje","Ingeniería y Construcción","Expresión y Audiovisual"],
+     links:["Antropoceno","Robótica Analógica","Moda Tinker","Ingeniería Inversa","Procesos Edificantes"],
+     example:"Una chapa puede acabar siendo parte de una ciudad, un alambre convertirse en un mecanismo o una pieza metálica transformarse en una joya.",
+     question:"¿Qué puedo hacer que haga el metal?",
+     why:"Porque conocer un material empieza por dejar que sus posibilidades aparezcan al manipularlo.",
+     edades:"8-16",duracion:"2-4h"},
+    {num:"19",nombre:"Estampados",gancho:"Deja tu marca",color:"#a8bc2a",
+     short:"Explorar la huella, la repetición y la transferencia de formas sobre diferentes soportes desde la experimentación.",
+     explore:"Sellos, serigrafías, estampas, pegatinas, collage y texturas permiten investigar qué deja marca, cómo se transfiere una forma y qué ocurre cuando se repite, superpone o combina. No buscamos dominar una técnica, sino descubrir las posibilidades de estampar.",
+     do:["sellos","serigrafía","estampas","pegatinas","collage","texturas","soportes","impresión experimental"],
+     areas:["Expresión y Audiovisual"],
+     links:["Enlaces Covalentes","Antropoceno","¡Vaya Telar!","Cartón, Cartón, Cartón"],
+     example:"Un utensilio cotidiano, una textura o un pequeño molde puede convertirse en un sello y generar una composición repetida sobre papel, tela u otro soporte.",
+     question:"¿Qué pasa cuando una forma deja su huella?",
+     why:"Porque repetir una marca permite descubrir patrones, ritmos y nuevas imágenes.",
+     edades:"4-14",duracion:"1-3h"},
+    {num:"20",nombre:"Procesos Edificantes",gancho:"Construir de verdad",color:"#e07b3a",
+     short:"Explorar procesos constructivos reales y adquirir conocimientos y habilidades relacionados con materiales, herramientas, técnicas, uniones y fases de construcción.",
+     explore:"Aquí la construcción se aborda de una manera más formativa y técnica: cómo se prepara un material, cómo se une, qué herramientas necesitamos, qué orden tiene un proceso y por qué una solución funciona. Puede incluir construcción tradicional, natural o contemporánea.",
+     do:["materiales","herramientas","técnicas","uniones","fases","construcción","reparación","sistemas constructivos","construcción natural"],
+     areas:["Ingeniería y Construcción","Diseño y Arquitectura"],
+     links:["Todo en Regla","Lógica Recíproca","Modos de Habitar","Más Madera","Antropoceno","Dar la Lata"],
+     example:"Después de proyectar un espacio, el grupo analiza qué materiales y técnicas necesita y construye sus elementos siguiendo un proceso real.",
+     question:"¿Cómo se construye esto y por qué se hace así?",
+     why:"Porque aprender a construir es comprender que detrás de cada espacio hay decisiones, materiales, herramientas y procesos.",
+     edades:"8-16",duracion:"3-6h"}
+  ];
+
+  var grid=document.getElementById("catGrid"),
+      noRes=document.getElementById("noResults"),
+      countLabel=document.getElementById("countLabel");
+
+  function areaChips(arr){
+    return arr.map(function(a){
+      return'<span class="area-chip" style="background:'+AREA_COLORS[a]+'">'+a+'</span>';
+    }).join("");
+  }
+
+  function renderCards(list){
+    grid.innerHTML="";
+    var v=0;
+    list.forEach(function(c){
+      v++;
+      var div=document.createElement("div");
+      div.className="celda-card";
+      div.style.setProperty("--cc",c.color);
+      div.innerHTML=
+        '<div class="celda-card-head"><span class="celda-num-badge">'+c.num+'</span><div class="celda-card-info"><div class="celda-nombre">'+c.nombre+'</div><div class="celda-gancho">'+c.gancho+'</div></div></div>'+
+        '<div class="celda-card-desc">'+c.short+'</div>'+
+        '<div class="celda-card-tags">'+areaChips(c.areas)+'</div>';
+      div.addEventListener("click",function(){openModal(c);});
+      grid.appendChild(div);
+    });
+    noRes.classList.toggle("show",v===0);
+    countLabel.textContent=v+" celdas";
+  }
+  renderCards(CELDAS);
+
+  var activeCat="all",searchTerm="";
+
+  document.querySelectorAll(".cat-fbtn").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      document.querySelectorAll(".cat-fbtn").forEach(function(b){b.classList.remove("on");});
+      btn.classList.add("on");
+      activeCat=btn.dataset.cat;
+      applyFilters();
+    });
+  });
+
+  document.getElementById("searchInput").addEventListener("input",function(e){
+    searchTerm=e.target.value.toLowerCase();
+    applyFilters();
+  });
+
+  function applyFilters(){
+    var filtered=CELDAS.filter(function(c){
+      var mc=activeCat==="all"||c.areas.indexOf(AREA_KEY[activeCat])>=0;
+      var hay=([c.num,c.nombre,c.gancho,c.short,c.explore].concat(c.do).concat(c.links).concat(c.areas).join(" ")).toLowerCase();
+      return mc&&(!searchTerm||hay.indexOf(searchTerm)>=0);
+    });
+    renderCards(filtered);
+  }
+
+  var modalBg=document.getElementById("modalBg"),
+      modalBody=document.getElementById("modalBody");
+
+  function slug(name){
+    return name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9 ]/g,"").trim().replace(/\s+/g," ").toLowerCase();
+  }
+  function findByName(name){
+    return CELDAS.filter(function(x){return slug(x.nombre)===slug(name);})[0]||null;
+  }
+  function linkChips(arr){
+    return arr.map(function(nm){
+      var t=findByName(nm);
+      var fn=t?'onclick="openByLink(\''+slug(t.nombre)+'\')"':'';
+      var tip=nm==="Autonomía"?'title="Fuera del núcleo actual (área Exploradores)"':'';
+      if(t)return'<span class="link-chip" '+fn+' '+tip+'>'+nm+'</span>';
+      else return'<span class="link-chip" title="Otro territorio">'+nm+'</span>';
+    }).join("");
+  }
+  function openByLink(s){
+    var c=CELDAS.filter(function(x){return slug(x.nombre)===s;})[0];
+    if(c)openModal(c);
+  }
+
+  function openModal(c){
+    modalBg.style.setProperty("--cc",c.color);
+    var dohtml=c.do.map(function(x){return'<li>'+x+'</li>';}).join("");
+    var note=c.note?'<div class="cat-modal-section"><h4>Nota</h4><p>'+c.note+'</p></div>':'';
+    modalBody.innerHTML=
+      '<span class="cat-modal-num">'+c.num+'</span>'+
+      '<h2 class="cat-modal-nombre">'+c.nombre+'</h2>'+
+      '<p class="cat-modal-gancho">'+c.gancho+'</p>'+
+      '<div class="cat-modal-short">'+c.short+'</div>'+
+      '<div class="cat-modal-section"><h4>¿Qué exploramos?</h4><p>'+c.explore+'</p></div>'+
+      '<div class="cat-modal-section"><h4>¿Qué podemos hacer?</h4><ul>'+dohtml+'</ul></div>'+
+      '<div class="cat-modal-section"><h4>Áreas</h4><div class="cat-modal-areas">'+areaChips(c.areas)+'</div></div>'+
+      '<div class="cat-modal-section"><h4>Conexiones directas</h4><div class="cat-modal-tags">'+linkChips(c.links)+'</div></div>'+
+      '<div class="cat-modal-section"><h4>Un ejemplo Coloniales</h4><p>'+c.example+'</p></div>'+
+      '<div class="cat-modal-quote">“'+c.question+'”</div>'+
+      '<div class="cat-modal-section"><h4>¿Por qué esta celda?</h4><p>'+c.why+'</p></div>'+
+      note+
+      '<div class="cat-modal-pie">Edad recomendada: <strong>'+c.edades+' años</strong> &nbsp;·&nbsp; Duración estimada: <strong>'+c.duracion+'</strong></div>';
+    modalBg.classList.add("open");
+    document.body.style.overflow="hidden";
+  }
+
+  document.getElementById("modalClose").addEventListener("click",closeModal);
+  document.getElementById("modalBg").addEventListener("click",function(e){if(e.target===this)closeModal();});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeModal();});
+  function closeModal(){modalBg.classList.remove("open");document.body.style.overflow="";}
+  </script>
+
+
+</body>
+</html>

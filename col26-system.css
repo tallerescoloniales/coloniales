@@ -592,7 +592,7 @@ body.col26-body{
 }
 /* ── Main header menu (site-wide) ── */
 .main-header{display:flex;align-items:center;justify-content:space-between;padding:10px 24px;background:rgba(255,255,255,.98);border-bottom:1px solid var(--col26-line);position:sticky;top:0;z-index:1100;backdrop-filter:blur(5px);line-height:1}
-.main-header .logo{display:flex;align-items:center;width:150px;height:36px;background:url('https://i0.wp.com/tallerescoloniales.com/wp-content/uploads/2025/02/cropped-coloniales.webp') no-repeat left center/contain;font-size:0;text-decoration:none;flex-shrink:0}
+.main-header .logo{display:flex;align-items:center;width:150px;height:36px;background:url('./img/logo-igual-texto.png') no-repeat left center/contain;font-size:0;text-decoration:none;flex-shrink:0}
 .main-header .logo em{display:none}
 .main-nav{display:flex;gap:2px;align-items:center;margin-left:auto;overflow:visible;scrollbar-width:none;-ms-overflow-style:none}
 .main-nav::-webkit-scrollbar{display:none}
