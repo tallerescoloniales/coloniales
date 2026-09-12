@@ -10,10 +10,10 @@
   <style>
     .kit-gallery img{width:100%;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.12);display:block}
     .kit-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
-    .kit-product-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:48px}
-    .kit-product-layout .kit-gallery{grid-column:1;grid-row:1}
-    .kit-product-layout>.col26-reveal:last-child{grid-column:2;grid-row:1}
-    @media(max-width:980px){.kit-product-layout{grid-template-columns:1fr;gap:28px}.kit-product-layout .kit-gallery,.kit-product-layout>.col26-reveal:last-child{grid-column:1;grid-row:auto}}
+    .kit-product-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"image content";align-items:center;gap:48px}
+    .kit-product-layout .kit-gallery{grid-area:image}
+    .kit-product-layout>.col26-reveal:last-child{grid-area:content}
+    @media(max-width:980px){.kit-product-layout{grid-template-columns:1fr;grid-template-areas:"image" "content";gap:28px}}
   </style>
 </head>
 <body class="col26-body">
