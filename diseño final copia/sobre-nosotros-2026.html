@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Coloniales | Juego, arquitectura y aprendizaje en Santander</title>
+  <meta name="description" content="Conoce Coloniales: proyecto educativo en Santander (Alejandro Lavid Saiz). Juego libre, arquitectura, bioconstrucción y talleres que usan materiales reales para fomentar autonomía y pensamiento práctico.">
+  <link rel="canonical" href="https://tallerescoloniales.com/coloniales/">
+  <meta property="og:title" content="Sobre Coloniales | Juego, arquitectura y aprendizaje en Santander">
+  <meta property="og:description" content="Proyecto educativo en Santander: juego libre, arquitectura, talleres y campus que integran materiales reales, experimentación y pedagogía activa para infancia.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tallerescoloniales.com/coloniales/">
+  <meta property="og:image" content="https://tallerescoloniales.com/wp-content/uploads/2026/05/4-nodo-Pequeno.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:description" content="Filosofía Coloniales: juego, arquitectura y pedagogía activa en Santander. Talleres y proyectos que conectan materiales reales con aprendizaje autónomo.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./col26-system.css">
+  <style>
+    .col26-carousel {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 1;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .col26-carousel-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    .col26-carousel-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+    .col26-carousel-slide.active {
+      opacity: 1;
+    }
+    .col26-carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .col26-carousel-dots {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+    .col26-carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .col26-carousel-dot.active {
+      background: rgba(255, 255, 255, 1);
+    }
+    .col26-bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .col26-bio-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+    .col26-dynamic-bg {
+      position: relative;
+      z-index: 1;
+    }
+    .col26-dynamic-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+      animation: gradientShift 8s ease-in-out infinite;
+      z-index: -1;
+    }
+    @keyframes gradientShift {
+      0%, 100% { background: linear-gradient(45deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05)); }
+      50% { background: linear-gradient(225deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08)); }
+    }
+
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"AboutPage",
+    "name":"Sobre Coloniales",
+    "url":"https://tallerescoloniales.com/coloniales/"
+  }
+  </script>
+</head>
+<body class="col26-body">
+  <div class="col26-page">
+    <!-- Menú Principal (igual en todas las páginas) -->
+    <header class="main-header">
+      <a class="logo" href="index.html">Colonial<em>es</em></a>
+      <nav class="main-nav">        <a href="index.html">Inicio</a>
+        <div class="nav-dropdown">
+          <a href="sobre-nosotros-2026.html" class="nav-dropdown-trigger">Sobre…</a>
+          <div class="nav-dropdown-content">
+            <a href="sobre-nosotros-2026.html">Sobre Coloniales</a>
+            <a href="sobre-nosotros-2026.html#alejandro">Sobre mí</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="programas.html" class="nav-dropdown-trigger">Programas</a>
+          <div class="nav-dropdown-content">
+            <a href="campus-2026.html">Campus</a>
+            <a href="enfamilia-2026.html">En familia</a>
+            <a href="extra-2026.html">Extra</a>
+            <a href="coles-2026.html">Nómadas</a>
+            <a href="toma-la-calle-2026.html">Toma la calle</a>
+          </div>
+        </div>
+        <a href="campus-2026.html">Campus</a>
+        <a href="celdas3.html">Celdas</a>
+        <a href="#diario">Blog</a>
+        <div class="nav-dropdown">
+          <a href="kit-logica-reciproca-2026.html" class="nav-dropdown-trigger">Kits</a>
+          <div class="nav-dropdown-content">
+            <a href="hexa.html">Hexa</a>
+            <a href="domiko.html">Domiko</a>
+            <a href="duomo.html">Duomo</a>
+            <a href="leopalos.html">Leopalos</a>
+          </div>
+        </div>
+        <a href="#contacto">Contacto</a></nav>
+      <div style="display:flex;align-items:center;gap:6px">
+        <button class="main-hamburger" id="mainHamburger"><span></span> Menú</button>
+      </div>
+    </header>
+
+    <!-- Submenú de navegación interna -->
+    <header class="col26-topbar">
+      <div class="col26-wrap col26-topbar-inner">
+        <a class="col26-topbar-title" href="#">Sobre nosotros</a>
+        <div class="col26-nav-scroll-wrapper">
+          <nav class="col26-nav">
+            <a href="#proyecto">Proyecto</a>
+            <a href="#alejandro">Alejandro</a>
+            <a href="#mirada">La Mirada</a>
+            <a href="#laboratorios">Laboratorios</a>
+            <a href="#contacto">Contacto</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Overlay menú móvil -->
+    <div class="wp-overlay" id="wpOverlay">
+      <button class="wp-overlay-close" id="wpCloseBtn">✕ Cerrar</button>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <div class="wp-toggle-group">
+        <a href="sobre-nosotros-2026.html" class="wp-cat">Sobre Coloniales</a>
+        <div class="wp-sub">
+            <a href="sobre-nosotros-2026.html">Sobre Coloniales</a>
+            <a href="sobre-nosotros-2026.html#alejandro">Sobre mí</a>
+        </div>
+        </div>
+        <div class="wp-toggle-group">
+        <a href="programas.html" class="wp-cat">Programas</a>
+        <div class="wp-sub">
+            <a href="campus-2026.html">Campus</a>
+            <a href="enfamilia-2026.html">En familia</a>
+            <a href="extra-2026.html">Extra</a>
+            <a href="coles-2026.html">Nómadas</a>
+            <a href="toma-la-calle-2026.html">Toma la calle</a>
+        </div>
+        </div>
+        <a href="campus-2026.html">Campus</a>
+        <a href="celdas3.html">Celdas</a>
+        <a href="#diario">Blog</a>
+        <div class="wp-toggle-group">
+        <a href="kit-logica-reciproca-2026.html" class="wp-cat">Kits constructivos</a>
+        <div class="wp-sub">
+            <a href="hexa.html">Hexa</a>
+            <a href="domiko.html">Domiko</a>
+            <a href="duomo.html">Duomo</a>
+            <a href="leopalos.html">Leopalos</a>
+        </div>
+        </div>
+        <a href="#contacto">Contacto</a>
+        <div class="wp-overlay-social">
+          <a href="https://wa.me/34625039565" target="_blank">WhatsApp</a>
+          <a href="https://instagram.com/tallerescoloniales" target="_blank">Instagram</a>
+          <a href="https://facebook.com/tallerescoloniales" target="_blank">Facebook</a>
+        </div>
+      </nav>
+    </div>
+
+    <section class="col26-hero">
+      <div class="col26-wrap col26-hero-grid">
+        <div class="col26-hero-copy col26-reveal">
+          <p class="col26-kicker">Juego · arquitectura · materiales · <strong>Santander</strong></p>
+          <h1>Sobre <span>Coloniales</span></h1>
+          <p>Coloniales es un proyecto educativo en Santander que conecta arquitectura, arte, construcción, juego libre y pedagogía. Nace de una idea sencilla y exigente: la infancia aprende con el cuerpo entero cuando encuentra materiales reales, tiempo, espacio y adultos capaces de acompañar sin dirigirlo todo.</p>
+          <div class="col26-actions">
+            <a class="col26-btn col26-btn-primary" href="https://wa.me/34625039565" target="_blank" rel="noopener noreferrer">Hablar con Alejandro</a>
+            <a class="col26-btn col26-btn-outline" href="#alejandro">Ver perfil</a>
+          </div>
+        </div>
+        <div class="col26-photo-stack col26-reveal" data-parallax-stack>
+          <div class="col26-photo-card col26-photo-a"><img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/4-nodo-Pequeno.jpg" alt="Proyecto Coloniales"></div>
+          <div class="col26-photo-card col26-photo-b"><img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/3-filamentos-Pequeno.jpg" alt="Materiales y construcción"></div>
+          <div class="col26-photo-card col26-photo-c"><img src="https://tallerescoloniales.com/wp-content/uploads/2026/05/10-simbiosis-Pequeno.jpg" alt="Juego y aprendizaje compartido"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="col26-section" id="proyecto">
+      <div class="col26-wrap">
+        <div class="col26-head col26-reveal"><span class="col26-num">01 /</span><h2 class="col26-title">El Proyecto</h2></div>
+        <div class="col26-split">
+          <div class="col26-panel col26-reveal">
+            <h3>Un mundo por construir</h3>
+            <p>En Coloniales el juego no es un premio ni una decoración metodológica. Es el medio real para estimular curiosidad, autonomía, creatividad y conocimiento desde la primera infancia hasta la juventud.</p>
+            <p>El proyecto cruza arquitectura, arte, tecnología, reciclaje, construcción y exploración sensorial. A veces toma forma de campus, otras de extraescolar, otras de espacio en familia o de intervención en la ciudad.</p>
+          </div>
+          <div class="col26-panel col26-reveal">
+            <h3>Cómo está estructurado</h3>
+            <p class="col26-lead">Coloniales es un ecosistema pensado para proteger el aprendizaje autónomo:</p>
+            <div class="col26-feature-list">
+              <div class="col26-feature"><strong>Celdas de Investigación:</strong> Unidades temáticas (arquitectura, tecnología, arte) que funcionan como semillas de conocimiento con materiales y provocaciones.</div>
+              <div class="col26-feature"><strong>Programas Activos:</strong> Campus intensivo en verano, extraescolar continua y espacios en familia, adaptados a las realidades de cada momento.</div>
+              <div class="col26-feature"><strong>Materiales y Espacio:</strong> Diseñamos nuestros propios kits y tratamos el Enclave Pronillo como el tercer educador.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="col26-section col26-section-dark col26-dynamic-bg" id="alejandro">
+      <div class="col26-wrap">
+        <div class="col26-head col26-reveal"><span class="col26-num">02 /</span><h2 class="col26-title">Alejandro Lavid Saiz</h2></div>
+        <div class="col26-bio-grid">
+          <div class="col26-reveal">
+            <div class="col26-carousel">
+              <div class="col26-carousel-inner" id="carouselInner">
+                <!-- Slides insertadas por JavaScript -->
+              </div>
+              <div class="col26-carousel-dots" id="carouselDots">
+                <!-- Dots insertados por JavaScript -->
+              </div>
+            </div>
+          </div>
+          <div class="col26-reveal">
+            <h3>Arquitecto técnico, bioconstructor y facilitador de espacios de aprendizaje</h3>
+            <p>Soy arquitecto técnico y bioconstructor de formación. Durante años estuve diseñando espacios para que otros los habitaran, hasta que entendí que la verdadera arquitectura empieza mucho antes: en el juego. Empecé a fabricar materiales y a acompañar a la infancia, y así cambié los planos de obra por los espacios de aprendizaje libre.</p>
+            <p>Llevo más de diez años observando cómo la infancia construye el mundo con las manos. He participado en proyectos educativos, culturales y artísticos en colegios, Al Cubo, la escuela viva SerYo, Medialab Prado y MAF.</p>
+            <div class="col26-tags" style="margin-top: 24px;">
+              <span class="col26-chip">Arquitectura</span>
+              <span class="col26-chip">Construcción natural</span>
+              <span class="col26-chip">Diseño de materiales</span>
+              <span class="col26-chip">Juego y aprendizaje</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="col26-section col26-section-cream" id="mirada">
+      <div class="col26-wrap">
+        <div class="col26-head col26-reveal"><span class="col26-num">03 /</span><h2 class="col26-title">La Mirada Pedagógica</h2></div>
+
+        <div class="col26-split" style="margin-bottom: 48px;">
+          <div class="col26-panel col26-reveal">
+            <h3 style="font-style: italic; font-size: 1.1rem;">Por qué existe Coloniales</h3>
+            <p>"Hubo un momento en el que vi cómo un grupo de niños, con solo unas cuantas maderas y algo de cuerda, eran capaces de organizar un sistema social, negociar reglas y entender la física sin que nadie les diera una sola lección."</p>
+            <p>Ese fue el detonante. Coloniales existe porque existe la necesidad imperiosa de devolver a la infancia los espacios no dirigidos. Espacios donde no se trata de cumplir un objetivo adulto, sino de satisfacer la propia curiosidad.</p>
+          </div>
+          <div class="col26-panel col26-reveal">
+            <h3>Nuestros principios</h3>
+            <p class="col26-lead">Cómo entendemos el aprendizaje:</p>
+            <div class="col26-feature-list">
+              <div class="col26-feature"><strong>Juego:</strong> El motor principal, no una recompensa.</div>
+              <div class="col26-feature"><strong>Autonomía:</strong> Acompañar sin dirigir.</div>
+              <div class="col26-feature"><strong>Construcción:</strong> Pensar con las manos.</div>
+              <div class="col26-feature"><strong>Riesgo evaluado:</strong> Permitir el riesgo funcional.</div>
+              <div class="col26-feature"><strong>Cuerpo y materia:</strong> Aprendizaje sensorial total.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col26-grid-3">
+          <article class="col26-card col26-reveal">
+            <div class="col26-card-body">
+              <span class="col26-card-meta">Movimiento libre</span>
+              <h3>El cuerpo como primer territorio</h3>
+              <p>Explorar el espacio libremente ayuda a construir confianza, autonomía y mapas corporales propios. No aprendemos solo con la cabeza.</p>
+            </div>
+          </article>
+          <article class="col26-card col26-reveal">
+            <div class="col26-card-body">
+              <span class="col26-card-meta">Juego autónomo</span>
+              <h3>Facilitar en vez de dirigir</h3>
+              <p>La lógica no es decir constantemente qué hacer, sino diseñar condiciones para que algo interesante pueda ocurrir y sostenerlo con atención.</p>
+            </div>
+          </article>
+          <article class="col26-card col26-reveal">
+            <div class="col26-card-body">
+              <span class="col26-card-meta">Pensar con las manos</span>
+              <h3>Construir también es aprender</h3>
+              <p>Ya sea con cartón, madera, hilos, mecanismos o luz, la construcción aparece como una forma de entender el mundo y no solo de producir objetos.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="col26-section col26-section-dark" id="laboratorios">
+      <div class="col26-wrap">
+        <div class="col26-head col26-reveal"><span class="col26-num">04 /</span><h2 class="col26-title">Laboratorios en Práctica</h2></div>
+        <p class="col26-lead col26-reveal">La filosofía necesita mancharse las manos. Así es como llevamos estas ideas a la realidad.</p>
+
+        <div class="col26-grid-2">
+          <div class="col26-panel col26-panel-dark col26-reveal">
+            <h3>Campus de Investigación</h3>
+            <p>Cada verano lanzamos temáticas nuevas que se basan en los intereses y las actividades que más les atraen a los participantes. Ahí nacen las metodologías y materiales que luego se destilan y se convierten en las "Celdas" regulares durante el curso escolar.</p>
+            <p style="font-size: 0.9rem; margin-top: 12px;"><em>Espacio donde experimentamos, prototipamos y validamos nuevos formatos educativos.</em></p>
+          </div>
+          <div class="col26-panel col26-panel-dark col26-reveal">
+            <h3>Toma la Calle + Enclave Pronillo</h3>
+            <p>Intervención del espacio público bajo el puente de Las Llamas. Demostramos que el juego libre no necesita cuatro paredes, sino materiales no estructurados, provocación y comunidad.</p>
+            <p>El Enclave Pronillo actúa como el tercer educador: un espacio diseñado intencionalmente donde cada rincón, cada material, cada textura invita a descubrir.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="col26-section" id="contacto">
+      <div class="col26-wrap">
+        <div class="col26-cta col26-reveal">
+          <h2 class="col26-title">¿Quieres Conocerlo Mejor?</h2>
+          <p>Si quieres entender mejor la propuesta, traer Coloniales a tu centro, apuntarte a una actividad o pensar una colaboración, escríbenos. Nos gusta hablar de materiales, infancia, ciudad y aprendizaje con calma, y a partir de ahí encontrar el formato adecuado.</p>
+          <div class="col26-actions">
+            <a class="col26-btn col26-btn-primary" href="https://wa.me/34625039565" target="_blank" rel="noopener noreferrer">WhatsApp directo</a>
+            <a class="col26-btn col26-btn-outline" href="mailto:hola@tallerescoloniales.com">Escribir email</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="./col26-system.js"></script>
+  <script>
+    // Carrusel de imágenes de Alejandro
+    const carouselImages = [
+      { src: '../video-campus26/assets/04-nodo.jpg', alt: 'Proyecto' },
+      { src: '../video-campus26/assets/03-filamento.jpg', alt: 'Materiales' },
+      { src: '../video-campus26/assets/10-simbiosis.jpg', alt: 'Trabajo en equipo' }
+    ];
+
+    let currentSlide = 0;
+
+    function initCarousel() {
+      const inner = document.getElementById('carouselInner');
+      const dotsContainer = document.getElementById('carouselDots');
+
+      // Crear slides
+      carouselImages.forEach((img, index) => {
+        const slide = document.createElement('div');
+        slide.className = `col26-carousel-slide ${index === 0 ? 'active' : ''}`;
+        const imgEl = document.createElement('img');
+        imgEl.src = img.src;
+        imgEl.alt = img.alt;
+        slide.appendChild(imgEl);
+        inner.appendChild(slide);
+
+        // Crear dots
+        const dot = document.createElement('div');
+        dot.className = `col26-carousel-dot ${index === 0 ? 'active' : ''}`;
+        dot.onclick = () => goToSlide(index);
+        dotsContainer.appendChild(dot);
+      });
+
+      // Auto-rotate cada 5 segundos
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % carouselImages.length;
+        updateCarousel();
+      }, 5000);
+    }
+
+    function updateCarousel() {
+      const slides = document.querySelectorAll('.col26-carousel-slide');
+      const dots = document.querySelectorAll('.col26-carousel-dot');
+
+      slides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === currentSlide);
+      });
+
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      updateCarousel();
+    }
+
+    // Iniciar cuando el DOM esté listo
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCarousel);
+    } else {
+      initCarousel();
+    }
+  </script>
+
+
+</body>
+</html>
