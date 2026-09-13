@@ -122,6 +122,27 @@ document.addEventListener("DOMContentLoaded", function () {
       overlay.classList.contains("open") ? closeMenu() : openMenu();
     });
     if (closeButton) closeButton.addEventListener("click", closeMenu);
+    overlay.querySelectorAll(".wp-toggle-group").forEach(function (group) {
+      var trigger = group.querySelector(".wp-cat");
+      var submenu = group.querySelector(".wp-sub");
+      if (!trigger || !submenu) return;
+      trigger.setAttribute("aria-expanded", "false");
+      trigger.addEventListener("click", function (event) {
+        if (window.matchMedia("(max-width: 860px)").matches) {
+          event.preventDefault();
+          var isOpen = group.classList.contains("is-open");
+          overlay.querySelectorAll(".wp-toggle-group.is-open").forEach(function (openGroup) {
+            openGroup.classList.remove("is-open");
+            var openTrigger = openGroup.querySelector(".wp-cat");
+            if (openTrigger) openTrigger.setAttribute("aria-expanded", "false");
+          });
+          if (!isOpen) {
+            group.classList.add("is-open");
+            trigger.setAttribute("aria-expanded", "true");
+          }
+        }
+      });
+    });
     overlay.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", closeMenu);
     });

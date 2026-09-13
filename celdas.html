@@ -79,7 +79,6 @@
     .cat-modal-short { padding:12px 16px; border:1.5px solid var(--cc); border-left-width:5px; background:#fdf3f9; border-radius:8px; font-size:.82rem; color:#555; line-height:1.7; margin-bottom:18px; }
     .cat-modal-quote { margin:0 0 18px; padding:12px 20px; background:#f5f5f5; border-left:5px solid var(--cc); font-weight:800; font-size:1rem; color:var(--dark); line-height:1.5; }
     .cat-modal-areas { display:flex; gap:6px; flex-wrap:wrap; }
-    .cat-modal-pie { font-size:.7rem; color:#888; border-top:1px solid #eee; padding-top:14px; margin-top:6px; }
     /* ── Chips de conexiones ── */
     .link-chip { font-size:.58rem; font-weight:700; letter-spacing:.05em; padding:5px 10px; border-radius:6px; background:#fff; border:1.5px solid #ddd; color:#555; cursor:pointer; transition:all .2s; }
     .link-chip:hover { background:var(--mag); border-color:var(--mag); color:#fff; }
@@ -584,8 +583,7 @@
       '<div class="cat-modal-section"><h4>Un ejemplo Coloniales</h4><p>'+c.example+'</p></div>'+
       '<div class="cat-modal-quote">“'+c.question+'”</div>'+
       '<div class="cat-modal-section"><h4>¿Por qué esta celda?</h4><p>'+c.why+'</p></div>'+
-      note+
-      '<div class="cat-modal-pie">Edad recomendada: <strong>'+c.edades+' años</strong> &nbsp;·&nbsp; Duración estimada: <strong>'+c.duracion+'</strong></div>';
+      note;
     modalBg.classList.add("open");
     document.body.style.overflow="hidden";
   }

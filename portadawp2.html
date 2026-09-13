@@ -44,6 +44,13 @@
     .wp-overlay nav{display:flex;flex-direction:column;gap:0;text-align:center}
     .wp-overlay nav a{color:#ddd;font-size:clamp(1.1rem,3vw,1.8rem);font-weight:700;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;padding:10px 24px;transition:.25s}
     .wp-overlay nav a:hover{color:var(--col26-accent);letter-spacing:.1em}
+    .wp-toggle-group{display:flex;flex-direction:column}
+    .wp-cat{color:#e6007e;font-weight:800;font-size:clamp(.75rem,2vw,1rem);padding:10px 24px 4px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;display:block;cursor:pointer}
+    .wp-cat::after{content:'\25BE';display:inline-block;margin-left:6px;font-size:.7em;color:#666;transition:transform .25s}
+    .wp-sub{overflow:hidden;max-height:0;transition:max-height .35s ease;display:flex;flex-direction:column}
+    .wp-sub a{font-size:clamp(.68rem,1.8vw,.88rem)!important;padding:5px 24px 5px 44px!important;color:#bbb!important;font-weight:600!important}
+    .wp-toggle-group.is-open .wp-sub{max-height:400px}
+    .wp-toggle-group.is-open .wp-cat::after{transform:rotate(180deg)}
     .wp-overlay-label{color:#555;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;margin:30px 0 8px;font-weight:700}
     .wp-overlay-sub a{font-size:clamp(.85rem,2vw,1.1rem);font-weight:600;color:#888;padding:6px 24px}
     .wp-overlay-sub a:hover{color:var(--col26-accent)}
@@ -312,6 +319,26 @@
       function p(){if(h)h.classList.add('active');o.classList.add('open');document.body.style.overflow='hidden'}
       if(h)h.addEventListener('click',function(){o.classList.contains('open')?m():p()});
       if(c)c.addEventListener('click',m);
+      if(o)o.querySelectorAll('.wp-toggle-group').forEach(function(group){
+        var trigger=group.querySelector('.wp-cat'),submenu=group.querySelector('.wp-sub');
+        if(!trigger||!submenu)return;
+        trigger.setAttribute('aria-expanded','false');
+        trigger.addEventListener('click',function(event){
+          if(window.matchMedia('(max-width: 860px)').matches){
+            event.preventDefault();
+            var isOpen=group.classList.contains('is-open');
+            o.querySelectorAll('.wp-toggle-group.is-open').forEach(function(openGroup){
+              openGroup.classList.remove('is-open');
+              var openTrigger=openGroup.querySelector('.wp-cat');
+              if(openTrigger)openTrigger.setAttribute('aria-expanded','false');
+            });
+            if(!isOpen){
+              group.classList.add('is-open');
+              trigger.setAttribute('aria-expanded','true');
+            }
+          }
+        });
+      });
       if(o)o.querySelectorAll('a').forEach(function(a){a.addEventListener('click',m)});
 
       // Slider
