@@ -632,7 +632,8 @@ body.col26-body{
 .wp-sub{overflow:hidden;max-height:0;transition:max-height .35s ease;display:flex;flex-direction:column}
 .wp-sub a{pointer-events:none}
 .wp-overlay nav .wp-sub a{font-size:clamp(.68rem,1.8vw,.88rem);padding:5px 24px 5px 44px;color:#bbb;font-weight:600}
-.wp-cat{color:#e6007e;font-weight:800;font-size:clamp(.75rem,2vw,1rem);padding:10px 24px 4px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;display:block;cursor:pointer}
+.wp-cat{color:#ddd;font-size:clamp(.95rem,2.5vw,1.3rem);font-weight:700;padding:7px 24px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;display:block;cursor:pointer;transition:.25s;background:none;border:0;font-family:inherit}
+.wp-cat:hover{color:var(--col26-accent);letter-spacing:.1em}
 .wp-cat::after{content:'\25BE';display:inline-block;margin-left:6px;font-size:.7em;color:#666;transition:transform .25s}
 .wp-toggle-group:hover .wp-cat::after,.wp-toggle-group:focus-within .wp-cat::after,.wp-toggle-group.is-open .wp-cat::after{transform:rotate(180deg)}
 .wp-overlay-social{display:flex;gap:20px;margin-top:40px;padding-top:24px;border-top:1px solid #222}

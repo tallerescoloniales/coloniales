@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
     overlay.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", closeMenu);
+      if (!link.classList.contains("wp-cat")) link.addEventListener("click", closeMenu);
     });
   }
 });
