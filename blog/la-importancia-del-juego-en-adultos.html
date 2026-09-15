@@ -26,7 +26,8 @@
   <style>
         .post-header { padding: 44px 0 16px; }
     .post-header .col26-kicker { margin-bottom: 10px; }
-    .post-header h1 { margin: 0 0 14px; font-size: clamp(2.6rem, 6vw, 4.2rem); font-weight: 900; letter-spacing: .05em; text-transform: uppercase; line-height: 1.05; }
+    .post-header h1 { margin: 0 0 8px; font-size: clamp(1.7rem, 3.8vw, 2.6rem); font-weight: 900; letter-spacing: .04em; text-transform: uppercase; line-height: 1.1; }
+    .post-subtitle { margin: 0 0 14px; font-size: 1rem; font-weight: 400; line-height: 1.6; color: #666; max-width: 720px; }
     .post-meta { display: flex; flex-wrap: wrap; gap: 14px; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--col26-muted); }
     .post-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
     .post-tag { display: inline-flex; align-items: center; padding: 5px 10px; border: 1px solid var(--col26-line); border-radius: 999px; background: #fff; font-size: .6rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--col26-text); text-decoration: none; }
@@ -124,6 +125,7 @@
         <header class="post-header">
           <p class="col26-kicker">Blog · Educación</p>
           <h1>La importancia del juego en adultos.</h1>
+          <p class="post-subtitle">El juego: un elixir de bienestar para la vida adulta que hemos dejado atrás.</p>
           <div class="post-meta">
             <span>11 febrero, 2024</span>
             <span>Por Alejandro Lavid Saiz</span>
@@ -134,7 +136,7 @@
         </header>
 
         <div class="post-body">
-          <img src="img/blog/la-importancia-del-juego-en-adultos_feat.webp" alt="La importancia del juego en adultos." class="post-hero">
+          <img src="../img/blog/la-importancia-del-juego-en-adultos_feat.webp" alt="La importancia del juego en adultos." class="post-hero">
           
 <h1 class="wp-block-heading">El juego: Un elixir de bienestar para la vida adulta.</h1>
 
@@ -275,6 +277,12 @@
       </div>
 
       <aside class="blog-sidebar">
+        <div class="side-card">
+          <h4 class="side-title">Buscar</h4>
+          <form class="side-search-form" action="../blog.html" method="get" role="search">
+            <input type="search" name="q" placeholder="Buscar en el blog…" aria-label="Buscar en el blog">
+          </form>
+        </div>
         <div class="side-card">
           <h4 class="side-title">Categorías</h4>
           <a class="side-cat" href="../blog.html?cat=campus"><span class="dot" style="background:#d81b60"></span>Campus<span class="num">1</span></a>

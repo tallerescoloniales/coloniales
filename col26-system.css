@@ -430,6 +430,13 @@ body.col26-body{
 .col26-cta .col26-btn-outline{background:#fff;color:var(--col26-accent);border-color:var(--col26-accent)}
 .col26-cta .col26-btn-outline:hover,.col26-cta .col26-btn-outline:focus-visible{background:var(--col26-soft)}
 
+/* ── Blog sidebar search ── */
+.side-search-form input{width:100%;padding:9px 13px;border:1.5px solid #e5e5e5;border-radius:8px;font-family:inherit;font-size:.74rem;font-weight:600;letter-spacing:.04em;outline:none;transition:border-color .2s;background:#fff;color:var(--col26-text)}
+.side-search-form input:focus{border-color:var(--col26-accent)}
+.side-search-form input::placeholder{color:#b5b5b5}
+@media(max-width:960px){
+  .side-search-form input{font-size:.82rem;padding:11px 14px}
+}
 /* ── Program listing grid ── */
 .col26-list{display:grid;gap:0;border-top:1px solid var(--col26-line);border-bottom:1px solid var(--col26-line)}
 .col26-item{display:grid;grid-template-columns:140px 6px 1fr auto;background:#fff;border-bottom:1px solid var(--col26-line);text-decoration:none}
