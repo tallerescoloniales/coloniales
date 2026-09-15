@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TZ6M2Q27');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Coloniales - Talleres creativos para niños y familias en Santander</title>
+  <meta name="description" content="Artículos sobre juego libre, autonomía infantil, arquitectura del aprendizaje y los proyectos de Coloniales en Santander.">
+  <link rel="canonical" href="https://tallerescoloniales.com/blog.html">
+  <meta property="og:title" content="Blog | Coloniales">
+  <meta property="og:description" content="Ideas, proyectos y pedagogía: el blog de Coloniales, talleres creativos para niños y familias en Santander.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tallerescoloniales.com/blog.html">
+  <meta property="og:image" content="https://tallerescoloniales.com/img/blog/cartel-campus-2026.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:description" content="El blog de Coloniales: juego libre, autonomía infantil y aprendizaje construyendo.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./col26-system.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <style>
+    .blog-hero { padding: 56px 0 30px; }
+    /* Filtros estilo celdas */
+    .cat-header { background: #fff; border-bottom: 1px solid var(--line); padding: 20px 0 16px; position: sticky; top: 28px; z-index: 80; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+    .cat-header-inner { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .cat-title { font-size: clamp(1rem,2.5vw,1.4rem); font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .cat-title span { color: var(--mag); }
+    .cat-legend { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-size: .68rem; color: #666; margin: 10px 0 14px; }
+    .cat-legend-label { font-weight: 800; color: var(--dark); letter-spacing: .1em; text-transform: uppercase; }
+    .cat-legend-item { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+    .cat-legend-dot { width: 12px; height: 12px; border-radius: 99px; display: inline-block; }
+    .cat-controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .cat-fbtn { font-family: inherit; font-size: .58rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; padding: 6px 12px; border-radius: 6px; border: 1.5px solid #ddd; background: #fff; cursor: pointer; transition: all .2s; color: #777; }
+    .cat-fbtn:hover, .cat-fbtn.on { background: var(--mag); border-color: var(--mag); color: #fff; }
+    .cat-fbtn.all { background: #111; border-color: #111; color: #fff; }
+    /* Grid tarjetas */
+    .blog-grid { max-width: 1180px; margin: 32px auto 80px; padding: 0 24px; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
+    .blog-card { background: #fff; border-radius: 10px; box-shadow: 0 2px 16px rgba(0,0,0,.07); border-top: 4px solid var(--cc); overflow: hidden; display: flex; flex-direction: column; transition: box-shadow .2s, transform .2s; text-decoration: none; }
+    .blog-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.13); transform: translateY(-3px); }
+    .blog-card-head { padding: 12px 16px 0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .blog-cat-badge { font-size: .55rem; font-weight: 900; letter-spacing: .12em; color: #fff; border-radius: 5px; padding: 3px 8px; text-transform: uppercase; }
+    .blog-date { font-size: .6rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: #aaa; }
+    .blog-card img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; }
+    .blog-card-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .blog-card-body h3 { margin: 0; font-size: 1rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; line-height: 1.15; color: #111; }
+    .blog-card-body p { margin: 0; color: #666; font-size: .82rem; line-height: 1.75; }
+    .blog-card-tags { padding: 10px 16px 14px; display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; }
+    .c-tag { font-size: .52rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 3px 7px; border-radius: 4px; background: #f5f5f5; color: #666; }
+    .blog-no-results { text-align: center; padding: 60px 20px; color: #ccc; font-size: .82rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; display: none; }
+    .blog-no-results.show { display: block; }
+    @media(max-width:600px){ .cat-controls{flex-direction:column; align-items:flex-start} .blog-grid{grid-template-columns:1fr} }
+  </style>
+</head>
+<body class="col26-body">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZ6M2Q27"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class="col26-page">
+
+    <header class="main-header">
+      <a class="logo" href="index.html">Colonial<em>es</em></a>
+      <nav class="main-nav">
+        <a href="index.html">Inicio</a>
+        <a href="sobre-nosotros.html">Sobre nosotros</a>
+        <div class="nav-dropdown">
+          <span class="nav-dropdown-trigger">Programas</span>
+          <div class="nav-dropdown-content">
+            <a href="campus.html">Campus</a>
+            <a href="enfamilia.html">En familia</a>
+            <a href="extra.html">Extra</a>
+            <a href="coles.html">Nómadas - Coles</a>
+            <a href="toma-la-calle.html">Toma la calle</a>
+          </div>
+        </div>
+        <a href="celdas.html">Celdas</a>
+        <div class="nav-dropdown">
+          <a href="kit-logica-reciproca.html" class="nav-dropdown-trigger">Kits</a>
+          <div class="nav-dropdown-content">
+            <a href="hexa.html">Hexa</a>
+            <a href="domiko.html">Domiko</a>
+            <a href="duomo.html">Duomo</a>
+            <a href="leopalos.html">Leopalos</a>
+          </div>
+        </div>
+        <a href="blog.html" style="font-weight:800">Blog</a>
+        <a href="index.html#contacto">Contacto</a>
+        <a href="https://tallerescoloniales.github.io/santanderplayground" class="col26-nav-special">Santander Playground</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:6px">
+        <button class="main-hamburger" id="mainHamburger"><span></span> Menú</button>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="col26-hero blog-hero">
+      <div class="col26-wrap col26-hero-grid">
+        <div class="col26-hero-copy">
+          <p class="col26-kicker">El blog de Coloniales</p>
+          <h1>Ideas que se <span>construyen</span></h1>
+          <p>Arquitectura del aprendizaje, juego libre, autonomía infantil y proyectos: aquí compartimos cómo pensamos y cómo trabajamos cada semana en Santander.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filtros estilo celdas -->
+    <div class="cat-header" id="filtros">
+      <div class="cat-header-inner">
+        <div class="cat-header-top" style="display:flex;align-items:baseline;gap:12px;">
+          <span class="cat-title">Entradas por <span>Categorías y Etiquetas</span></span>
+        </div>
+        <div class="cat-legend">
+          <span class="cat-legend-label">Categorías:</span>
+          <button class="cat-legend-item" data-cat="campus" style="background:none;border:none;font-family:inherit;padding:0;"><span class="cat-legend-dot" style="background:#d81b60"></span>Campus</button>
+          <button class="cat-legend-item" data-cat="autonomia" style="background:none;border:none;font-family:inherit;padding:0;"><span class="cat-legend-dot" style="background:#4aaa5e"></span>Autonomía</button>
+          <button class="cat-legend-item" data-cat="educacion" style="background:none;border:none;font-family:inherit;padding:0;"><span class="cat-legend-dot" style="background:#7b5fd0"></span>Educación</button>
+          <button class="cat-legend-item" data-cat="diseño" style="background:none;border:none;font-family:inherit;padding:0;"><span class="cat-legend-dot" style="background:#e07b3a"></span>Diseño</button>
+        </div>
+        <div class="cat-controls">
+          <button class="cat-fbtn all on" data-filter="all">Todas</button>
+          <button class="cat-fbtn" data-filter="tag:campus">#campus</button>
+          <button class="cat-fbtn" data-filter="tag:juego-libre">#juego-libre</button>
+          <button class="cat-fbtn" data-filter="tag:arquitectura">#arquitectura</button>
+          <button class="cat-fbtn" data-filter="tag:verano-2026">#verano-2026</button>
+          <button class="cat-fbtn" data-filter="tag:autonomia">#autonomía</button>
+          <button class="cat-fbtn" data-filter="tag:movimiento-libre">#movimiento-libre</button>
+          <button class="cat-fbtn" data-filter="tag:proceso-creativo">#proceso-creativo</button>
+          <button class="cat-fbtn" data-filter="tag:juego">#juego</button>
+          <button class="cat-fbtn" data-filter="tag:adultos">#adultos</button>
+        </div>
+        <p id="filterLabel" style="margin:12px 0 0;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;"></p>
+      </div>
+    </div>
+
+    <!-- Grid de entradas -->
+    <div class="blog-grid">
+      <a class="blog-card" href="blog/campus-coloniales-2026.html" data-category="campus" data-tags="campus juego-libre arquitectura verano-2026" style="--cc:#d81b60">
+        <div class="blog-card-head">
+          <span class="blog-cat-badge" style="background:#d81b60">Campus</span>
+          <span class="blog-date">22 mayo 2026</span>
+        </div>
+        <img src="img/blog/cartel-campus-2026.webp" alt="Campus Coloniales 2026 · Membrana, Matriz, Prana">
+        <div class="blog-card-body">
+          <h3>Campus Coloniales: un verano para construir, habitar y entender el mundo</h3>
+          <p>Once semanas en Enclave Pronillo donde juego, ciencia, arte y arquitectura se mezclan de forma natural. Una invitación a construir sistemas, no objetos.</p>
+        </div>
+        <div class="blog-card-tags">
+          <span class="c-tag">Juego libre</span>
+          <span class="c-tag">Arquitectura</span>
+          <span class="c-tag">Verano 2026</span>
+        </div>
+      </a>
+    </div>
+    <div class="blog-no-results" id="noResults">Sin entradas en esta categoría o etiqueta · Volver a <a href="blog.html" style="color:var(--mag)">todas</a></div>
+
+  </div>
+
+  <script>
+    (function () {
+      var h = document.getElementById('mainHamburger');
+      var n = document.querySelector('.main-nav');
+      if (h && n) h.addEventListener('click', function () { n.classList.toggle('open'); });
+
+      (function initBlogFilter() {
+        var fbtns = document.querySelectorAll('.cat-fbtn[data-filter]');
+        var catBtns = document.querySelectorAll('.cat-legend-item[data-cat]');
+        var cards = document.querySelectorAll('.blog-card');
+        var noRes = document.getElementById('noResults');
+        var label = document.getElementById('filterLabel');
+        var nameMap = { campus: 'Campus', autonomia: 'Autonomía', educacion: 'Educación', 'diseño': 'Diseño' };
+
+        function apply() {
+          var active = document.querySelector('.cat-fbtn.on');
+          var f = active ? active.getAttribute('data-filter') : 'all';
+          var cat = document.querySelector('.cat-legend-item.sel') ? document.querySelector('.cat-legend-item.sel').getAttribute('data-cat') : '';
+          var shown = 0;
+          cards.forEach(function (card) {
+            var okCat = !cat || card.getAttribute('data-category') === cat;
+            var okF = false;
+            if (f === 'all') okF = true;
+            else if (f.indexOf('tag:') === 0) okF = card.getAttribute('data-tags').split(' ').indexOf(f.slice(4)) !== -1;
+            if (okCat && okF) { card.style.display = ''; shown++; } else { card.style.display = 'none'; }
+          });
+          noRes.classList.toggle('show', shown === 0);
+          var names = [];
+          if (cat) names.push('Categoría: ' + (nameMap[cat] || cat));
+          if (f !== 'all') names.push('Etiqueta: ' + f.replace('tag:', '#').replace('-', ' '));
+          label.textContent = names.length ? names.join(' · ') : '';
+        }
+
+        fbtns.forEach(function (b) {
+          b.addEventListener('click', function () {
+            fbtns.forEach(function (x) { x.classList.remove('on'); });
+            b.classList.add('on');
+            apply();
+          });
+        });
+        catBtns.forEach(function (b) {
+          b.addEventListener('click', function () {
+            catBtns.forEach(function (x) { x.classList.remove('sel'); });
+            b.classList.toggle('sel', b.getAttribute('data-cat') !== 'all');
+            apply();
+          });
+        });
+
+        var p = new URLSearchParams(window.location.search);
+        var tag = p.get('tag') || '';
+        var cat = p.get('cat') || '';
+        if (tag) {
+          var tb = document.querySelector('.cat-fbtn[data-filter="tag:' + tag + '"]');
+          if (tb) { fbtns.forEach(function (x) { x.classList.remove('on'); }); tb.classList.add('on'); }
+        }
+        if (cat) {
+          var cb = document.querySelector('.cat-legend-item[data-cat="' + cat + '"]');
+          if (cb) cb.classList.add('sel');
+        }
+        apply();
+      })();
+    })();
+  </script>
+</body>
+</html>
