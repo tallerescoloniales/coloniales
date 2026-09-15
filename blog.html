@@ -34,6 +34,13 @@
     .blog-card p { margin: 0; color: var(--col26-muted); font-size: .9rem; line-height: 1.75; }
     .blog-card:hover .blog-card h3 { color: var(--col26-accent); }
     .blog-empty { padding: 40px 0 80px; color: var(--col26-muted); }
+    .blog-tag { display: inline-flex; align-items: center; padding: 5px 10px; border: 1px solid var(--col26-line); border-radius: 999px; font-size: .62rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--col26-text); text-decoration: none; }
+    .blog-tag:hover, .blog-tag.active { border-color: var(--col26-accent); color: var(--col26-accent); background: #fff; }
+    .blog-tag.cat { background: var(--col26-accent); border-color: var(--col26-accent); color: #fff; }
+    .blog-card-cats { display: flex; flex-wrap: wrap; gap: 8px; }
+    .blog-filters { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 0 0 28px; }
+    .blog-filters b { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--col26-muted); margin-right: 4px; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
   </style>
 </head>
 <body class="col26-body">
@@ -87,14 +94,33 @@
 
     <section class="col26-section" style="padding-top:20px">
       <div class="col26-wrap">
+        <div class="blog-filters">
+          <b>Filtrar:</b>
+          <button class="blog-tag active" data-filter="all">Todos</button>
+          <button class="blog-tag cat" disabled>Categorías</button>
+          <button class="blog-tag" data-filter="campus">Campus</button>
+          <button class="blog-tag" data-filter="autonomia">Autonomía</button>
+          <button class="blog-tag" data-filter="educacion">Educación</button>
+          <button class="blog-tag" data-filter="diseño">Diseño</button>
+          <button class="blog-tag cat" disabled>Etiquetas</button>
+          <button class="blog-tag" data-filter="tag:campus">#campus</button>
+          <button class="blog-tag" data-filter="tag:juego-libre">#juego-libre</button>
+          <button class="blog-tag" data-filter="tag:arquitectura">#arquitectura</button>
+          <button class="blog-tag" data-filter="tag:verano-2026">#verano-2026</button>
+        </div>
         <div class="blog-grid">
 
-          <a class="blog-card" href="blog/campus-coloniales-2026.html">
+          <a class="blog-card" href="blog/campus-coloniales-2026.html" data-category="campus" data-tags="campus juego-libre arquitectura verano-2026">
             <img src="img/blog/cartel-campus-2026.webp" alt="Campus Coloniales 2026 · Membrana, Matriz, Prana">
             <div class="blog-card-body">
               <span class="col26-card-meta">Campus · 22 mayo 2026</span>
               <h3>Campus Coloniales: un verano para construir, habitar y entender el mundo</h3>
               <p>Once semanas en Enclave Pronillo donde juego, ciencia, arte y arquitectura se mezclan de forma natural. Una invitación a construir sistemas, no objetos.</p>
+              <div class="card-tags">
+                <span class="blog-tag cat">Campus</span>
+                <span class="blog-tag">Juego libre</span>
+                <span class="blog-tag">Arquitectura</span>
+              </div>
             </div>
           </a>
 
@@ -110,6 +136,41 @@
       var h = document.getElementById('mainHamburger');
       var n = document.querySelector('.main-nav');
       if (h && n) h.addEventListener('click', function () { n.classList.toggle('open'); });
+
+      (function initBlogFilter() {
+        var buttons = document.querySelectorAll('.blog-tag[data-filter]');
+        var cards = document.querySelectorAll('.blog-card');
+
+        function parseParams() {
+          var p = new URLSearchParams(window.location.search);
+          var tag = p.get('tag') || '';
+          if (tag) {
+            var b = document.querySelector('.blog-tag[data-filter="tag:' + tag + '"]');
+            if (b) b.click();
+          }
+        }
+
+        buttons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            buttons.forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            var f = btn.getAttribute('data-filter');
+            cards.forEach(function (card) {
+              if (f === 'all') { card.style.display = ''; return; }
+              var ok = false;
+              if (f.indexOf('tag:') === 0) {
+                var t = f.slice(4);
+                ok = card.getAttribute('data-tags').split(' ').indexOf(t) !== -1;
+              } else {
+                ok = card.getAttribute('data-category') === f;
+              }
+              card.style.display = ok ? '' : 'none';
+            });
+          });
+        });
+
+        parseParams();
+      })();
     })();
   </script>
 </body>
