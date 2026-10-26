@@ -608,6 +608,9 @@ body.col26-body{
 /* Destacado Santander Playground en menú */
 .main-nav a.col26-nav-special,
 .wp-overlay nav a.col26-nav-special{color:var(--col26-accent)}
+.main-nav a.col26-nav-special{display:flex;align-items:center;justify-content:center;box-sizing:border-box;flex:0 0 164px;width:164px;height:28px;padding:4px 8px}
+.main-nav a.col26-nav-special img{display:block;width:auto;height:24px;max-width:148px;object-fit:contain}
+.wp-overlay nav a.col26-nav-special img{display:block;width:auto;height:36px;max-width:190px;margin:0 auto;object-fit:contain}
 /* ── Desktop dropdowns ── */
 .nav-dropdown{position:relative;display:inline-flex}
 .nav-dropdown-trigger{padding:4px 10px;font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--col26-muted);white-space:nowrap;cursor:pointer}

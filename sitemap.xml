@@ -8,9 +8,15 @@
   </url>
   <url>
     <loc>https://tallerescoloniales.com/campus.html</loc>
-    <lastmod>2026-09-15</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tallerescoloniales.com/campus-verano-2026.html</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tallerescoloniales.com/extra.html</loc>
